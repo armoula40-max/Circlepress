@@ -1,0 +1,7 @@
+/* CirclePress Gutenberg editor tweaks — keep WYSIWYG close to frontend. */
+body.block-editor-page{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#232323}
+.block-editor-block-list__layout{font-size:16px;line-height:1.7}
+.wp-block{max-width:800px}
+h1.wp-block-post-title{font-family:Georgia,serif}
+.wp-block-quote{border-left:4px solid #d9481c;background:#faf3ea;padding:12px 20px}
+.wp-block-button__link{border-radius:999px}

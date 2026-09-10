@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CirclePress — 9 Niche Styles Preview</title>
+<link rel="stylesheet" href="../circlepress/style.css">
+<style>
+body{background:#f4f2ee}
+.demo-wrap{max-width:1200px;margin:0 auto;padding:20px}
+.demo-top{text-align:center;padding:34px 10px}
+.demo-top h1{font-size:2rem;margin:0 0 6px}
+.demo-niche{background:var(--cp-bg);border:1px solid var(--cp-border);border-radius:18px;padding:28px;margin:0 0 26px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.demo-food{--cp-primary:#d9481c;--cp-primary-dark:#b23a15;--cp-secondary:#2a9d48;--cp-accent:#ffb703;--cp-bg:#fffbf5;--cp-surface:#fff;--cp-surface-2:#faf3ea;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#eee2d3}
+.demo-crochet{--cp-primary:#9b5de5;--cp-primary-dark:#7d3fd1;--cp-secondary:#f15bb5;--cp-accent:#fee440;--cp-bg:#fdf7ff;--cp-surface:#fff;--cp-surface-2:#f7ecff;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#e7d5fb}
+.demo-pets{--cp-primary:#0ea5a0;--cp-primary-dark:#0b7f7b;--cp-secondary:#ff9f1c;--cp-accent:#ffd166;--cp-bg:#f7fffe;--cp-surface:#fff;--cp-surface-2:#e9faf6;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#cdeee7}
+.demo-nails{--cp-primary:#ff4d8d;--cp-primary-dark:#d63270;--cp-secondary:#7b2ff7;--cp-accent:#ffc6dd;--cp-bg:#fff7fa;--cp-surface:#fff;--cp-surface-2:#ffeaf2;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#f7c9dd}
+.demo-furniture{--cp-primary:#1b3a4b;--cp-primary-dark:#122a36;--cp-secondary:#c9a227;--cp-accent:#e8dcc6;--cp-bg:#faf8f4;--cp-surface:#fff;--cp-surface-2:#f1ece1;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#e2d8c6}
+.demo-homedecor{--cp-primary:#5c6b57;--cp-primary-dark:#48553f;--cp-secondary:#d4a373;--cp-accent:#faedcd;--cp-bg:#fefdf8;--cp-surface:#fff;--cp-surface-2:#f6f1e4;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#e7ddc6}
+.demo-diy{--cp-primary:#f77f00;--cp-primary-dark:#c96600;--cp-secondary:#003049;--cp-accent:#fcbf49;--cp-bg:#fffcf7;--cp-surface:#fff;--cp-surface-2:#fff3dd;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#f0dfba}
+.demo-beauty{--cp-primary:#b5179e;--cp-primary-dark:#8f117d;--cp-secondary:#ff87ab;--cp-accent:#ffc8dd;--cp-bg:#fff9fb;--cp-surface:#fff;--cp-surface-2:#ffeff5;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#f5c9dc}
+.demo-gardening{--cp-primary:#2d6a4f;--cp-primary-dark:#1f4d38;--cp-secondary:#95d5b2;--cp-accent:#f4a259;--cp-bg:#f7fbf4;--cp-surface:#fff;--cp-surface-2:#e9f4e6;--cp-text:#232323;--cp-muted:#6b6b6b;--cp-border:#cfe6cf}
+.demo-meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px}
+.demo-sw{display:flex;gap:6px;margin:12px 0}
+.demo-sw span{width:34px;height:34px;border-radius:10px;border:1px solid rgba(0,0,0,.1)}
+.demo-mini-hero{border-radius:14px;padding:26px;margin:0 0 16px}
+.demo-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.demo-card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:14px;overflow:hidden}
+.demo-card .ph{height:110px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;background:linear-gradient(135deg,var(--cp-surface-2),var(--cp-border))}
+.demo-card .tx{padding:12px 14px;font-size:.85rem}
+.demo-card .tx b{display:block;margin-bottom:4px}
+@media(max-width:700px){.demo-cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="demo-wrap">
+  <div class="demo-top">
+    <h1>⭕ CirclePress — 9 Niche Styles</h1>
+    <p style="color:#666">Live preview of every niche: palette, hero style, cards &amp; feature boxes. In WordPress, switch niches from <b>Customizer → 🌐 Site Niche</b>.</p>
+    <p><a class="cp-btn" href="#food">Explore ↓</a></p>
+  </div>
+
+  <section class="demo-niche demo-food" id="food">
+    <span class="cp-kicker">🍲 Food &amp; Recipes · hero: magazine</span>
+    <h2>Delicious recipes, tested in a real kitchen</h2>
+    <div class="demo-sw"><span style="background:#d9481c"></span><span style="background:#2a9d48"></span><span style="background:#ffb703"></span><span style="background:#fffbf5"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>Recipe + FAQ</b></span><span class="cp-badge">Jump to Recipe</span><span class="cp-badge">Print</span><span class="cp-badge">Nutrition</span></div>
+    <div class="cp-box cp-recipe"><h3 class="cp-box__title">🍲 Creamy Garlic Pasta</h3><div class="cp-recipe__meta"><div>Prep<b>15 min</b></div><div>Cook<b>20 min</b></div><div>Servings<b>4</b></div><div>Calories<b>540</b></div></div></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🍝</div><div class="tx"><b>30-Minute Dinners</b>Weeknight meals…</div></div><div class="demo-card"><div class="ph">🧁</div><div class="tx"><b>Cozy Baking</b>Cakes &amp; bread…</div></div><div class="demo-card"><div class="ph">🥗</div><div class="tx"><b>Fresh &amp; Healthy</b>Light bowls…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-crochet">
+    <span class="cp-kicker">🧶 Crochet · hero: split</span>
+    <h2>Free crochet patterns you'll actually finish</h2>
+    <div class="demo-sw"><span style="background:#9b5de5"></span><span style="background:#f15bb5"></span><span style="background:#fee440"></span><span style="background:#fdf7ff"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>HowTo + CreativeWork</b></span><span class="cp-badge">Difficulty: Beginner</span><span class="cp-badge">Hook 5mm</span></div>
+    <div class="cp-box cp-howto"><h3 class="cp-box__title">🧶 Amigurumi Bunny</h3><div class="cp-howto__badges"><span class="cp-badge">⏱ <b>3h</b></span><span class="cp-badge">📶 <b>Easy</b></span><span class="cp-badge">💰 <b>$12</b></span></div></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🧸</div><div class="tx"><b>Amigurumi</b>Plushies…</div></div><div class="demo-card"><div class="ph">🧣</div><div class="tx"><b>Wearables</b>Scarves…</div></div><div class="demo-card"><div class="ph">🛋️</div><div class="tx"><b>Blankets</b>Throws…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-pets">
+    <span class="cp-kicker">🐾 Pets · hero: bold + search</span>
+    <h2>Happy pets start with great advice</h2>
+    <div class="demo-sw"><span style="background:#0ea5a0"></span><span style="background:#ff9f1c"></span><span style="background:#ffd166"></span><span style="background:#f7fffe"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>Article + FAQ + Product</b></span><span class="cp-badge">Care guides</span><span class="cp-badge">Vet disclaimer</span></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🐶</div><div class="tx"><b>Dog Training</b>Basics…</div></div><div class="demo-card"><div class="ph">🐱</div><div class="tx"><b>Cat Nutrition</b>Food guides…</div></div><div class="demo-card"><div class="ph">✂️</div><div class="tx"><b>Grooming</b>At home…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-nails">
+    <span class="cp-kicker">💅 Nails · hero: magazine</span>
+    <h2>Nail inspo &amp; tutorials, fresh every week</h2>
+    <div class="demo-sw"><span style="background:#ff4d8d"></span><span style="background:#7b2ff7"></span><span style="background:#ffc6dd"></span><span style="background:#fff7fa"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>HowTo + ImageObject</b></span><span class="cp-badge">Shade gallery</span><span class="cp-badge">Price table</span></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">💗</div><div class="tx"><b>Gel Looks</b>Glossy…</div></div><div class="demo-card"><div class="ph">✨</div><div class="tx"><b>Nail Art</b>3D &amp; chrome…</div></div><div class="demo-card"><div class="ph">🌸</div><div class="tx"><b>Spring Trends</b>Pastels…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-furniture">
+    <span class="cp-kicker">🛋️ Furniture · hero: split</span>
+    <h2>Furniture worth keeping for decades</h2>
+    <div class="demo-sw"><span style="background:#1b3a4b"></span><span style="background:#c9a227"></span><span style="background:#e8dcc6"></span><span style="background:#faf8f4"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>Product + Review</b></span><span class="cp-badge">Comparison table</span><span class="cp-badge">Dimensions</span></div>
+    <div class="cp-box cp-product"><div style="font-size:3rem">🛋️</div><div><h3 class="cp-box__title">Cloud Linen Sofa</h3><div class="cp-rating"><span class="cp-stars">★★★★☆</span> <strong>4.5/5</strong></div><div class="cp-product__price">$899 <s>$1,199</s></div><span class="cp-btn cp-btn--sm">Check Price →</span></div></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🛏️</div><div class="tx"><b>Bedroom</b>Beds…</div></div><div class="demo-card"><div class="ph">🪑</div><div class="tx"><b>Office</b>Chairs…</div></div><div class="demo-card"><div class="ph">🌳</div><div class="tx"><b>Outdoor</b>Patio…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-homedecor">
+    <span class="cp-kicker">🏡 Home Decor · hero: magazine</span>
+    <h2>Rooms that feel like you</h2>
+    <div class="demo-sw"><span style="background:#5c6b57"></span><span style="background:#d4a373"></span><span style="background:#faedcd"></span><span style="background:#fefdf8"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>Article + HowTo</b></span><span class="cp-badge">Room palettes</span><span class="cp-badge">Shop the look</span></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🛋️</div><div class="tx"><b>Living Room</b>Cozy…</div></div><div class="demo-card"><div class="ph">🍳</div><div class="tx"><b>Kitchen</b>Refresh…</div></div><div class="demo-card"><div class="ph">🕯️</div><div class="tx"><b>Seasonal</b>Fall…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-diy">
+    <span class="cp-kicker">🛠️ DIY &amp; Crafts · hero: bold + search</span>
+    <h2>Make it yourself — weekend by weekend</h2>
+    <div class="demo-sw"><span style="background:#f77f00"></span><span style="background:#003049"></span><span style="background:#fcbf49"></span><span style="background:#fffcf7"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>HowTo + FAQ</b></span><span class="cp-badge">Tools checklist</span><span class="cp-badge">Cost badge</span></div>
+    <ol class="cp-steps"><li>Sand the pallet wood smooth.</li><li>Stain and let dry 2 hours.</li><li>Mount with brackets — done!</li></ol>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🪵</div><div class="tx"><b>Woodworking</b>Builds…</div></div><div class="demo-card"><div class="ph">♻️</div><div class="tx"><b>Upcycling</b>Old→new…</div></div><div class="demo-card"><div class="ph">👧</div><div class="tx"><b>Kids Crafts</b>Fun…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-beauty">
+    <span class="cp-kicker">💄 Beauty · hero: split</span>
+    <h2>Skincare &amp; beauty, minus the guesswork</h2>
+    <div class="demo-sw"><span style="background:#b5179e"></span><span style="background:#ff87ab"></span><span style="background:#ffc8dd"></span><span style="background:#fff9fb"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>Product + Review + HowTo</b></span><span class="cp-badge">Routine steps</span><span class="cp-badge">Swatches</span></div>
+    <div class="cp-proscons"><div class="cp-pros"><h4>✅ Pros</h4><ul><li>Gentle for daily use</li><li>Visible glow in 2 weeks</li></ul></div><div class="cp-cons"><h4>❌ Cons</h4><ul><li>Pricey</li><li>Strong scent</li></ul></div></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🧴</div><div class="tx"><b>Skincare</b>Routines…</div></div><div class="demo-card"><div class="ph">💋</div><div class="tx"><b>Makeup</b>Looks…</div></div><div class="demo-card"><div class="ph">💇</div><div class="tx"><b>Hair</b>Care…</div></div></div>
+  </section>
+
+  <section class="demo-niche demo-gardening">
+    <span class="cp-kicker">🌱 Gardening · hero: magazine</span>
+    <h2>Grow more, guess less</h2>
+    <div class="demo-sw"><span style="background:#2d6a4f"></span><span style="background:#95d5b2"></span><span style="background:#f4a259"></span><span style="background:#f7fbf4"></span></div>
+    <div class="demo-meta"><span class="cp-badge">Schema: <b>HowTo + Article</b></span><span class="cp-badge">☀️ Full sun</span><span class="cp-badge">💧 Moderate</span><span class="cp-badge">Zone 5–9</span></div>
+    <div class="cp-faq"><details open><summary>When should I plant tomatoes?</summary><div>After the last frost, when nights stay above 10°C.</div></details><details><summary>How often to water seedlings?</summary><div>Keep soil moist but never soggy — usually once daily.</div></details></div>
+    <div class="demo-cards"><div class="demo-card"><div class="ph">🍅</div><div class="tx"><b>Vegetables</b>Grow food…</div></div><div class="demo-card"><div class="ph">🌷</div><div class="tx"><b>Flowers</b>Color…</div></div><div class="demo-card"><div class="ph">🪴</div><div class="tx"><b>Indoor</b>Houseplants…</div></div></div>
+  </section>
+
+  <p style="text-align:center;color:#666;padding:20px">⭕ CirclePress 1.0.0 — lightweight · SEO-first · ad &amp; affiliate ready · <a href="../circlepress/readme.txt">readme</a></p>
+</div>
+</body>
+</html>

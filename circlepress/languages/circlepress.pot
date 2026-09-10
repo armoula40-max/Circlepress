@@ -1,0 +1,114 @@
+# Copyright (C) 2026 CirclePress Team
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: CirclePress 1.0.0\n"
+"Report-Msgid-Bugs-To: https://circlepress.example.com/\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: style.css
+msgid "Food & Recipes"
+msgstr ""
+
+msgid "Crochet"
+msgstr ""
+
+msgid "Pets"
+msgstr ""
+
+msgid "Nails"
+msgstr ""
+
+msgid "Furniture"
+msgstr ""
+
+msgid "Home Decor"
+msgstr ""
+
+msgid "DIY & Crafts"
+msgstr ""
+
+msgid "Beauty"
+msgstr ""
+
+msgid "Gardening"
+msgstr ""
+
+msgid "Skip to content"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Share:"
+msgstr ""
+
+msgid "You may also like"
+msgstr ""
+
+msgid "Jump to Recipe"
+msgstr ""
+
+msgid "Jump to Instructions"
+msgstr ""
+
+msgid "Print"
+msgstr ""
+
+msgid "Ingredients"
+msgstr ""
+
+msgid "Instructions"
+msgstr ""
+
+msgid "Tools"
+msgstr ""
+
+msgid "Materials"
+msgstr ""
+
+msgid "Steps"
+msgstr ""
+
+msgid "Pros"
+msgstr ""
+
+msgid "Cons"
+msgstr ""
+
+msgid "Check Price"
+msgstr ""
+
+msgid "Frequently asked questions"
+msgstr ""
+
+msgid "Our verdict"
+msgstr ""
+
+msgid "Advertisement"
+msgstr ""
+
+msgid "Leave a reply"
+msgstr ""
+
+msgid "Latest articles"
+msgstr ""
+
+msgid "Trending now"
+msgstr ""
+
+msgid "Featured"
+msgstr ""
+
+msgid "Explore topics"
+msgstr ""
+
+msgid "Get our best ideas weekly"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
