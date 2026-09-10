@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CIRCLEPRESS_VERSION', '1.0.0' );
+define( 'CIRCLEPRESS_VERSION', '1.1.0' );
 define( 'CIRCLEPRESS_DIR', get_template_directory() );
 define( 'CIRCLEPRESS_URI', get_template_directory_uri() );
 
@@ -24,3 +24,4 @@ require CIRCLEPRESS_DIR . '/inc/ads.php';
 require CIRCLEPRESS_DIR . '/inc/meta-boxes.php';
 require CIRCLEPRESS_DIR . '/inc/shortcodes.php';
 require CIRCLEPRESS_DIR . '/inc/performance.php';
+require CIRCLEPRESS_DIR . '/inc/privacy.php';

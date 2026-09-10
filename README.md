@@ -33,7 +33,8 @@ Each niche has its own **style, homepage template, single-post features and Sche
 - **Affiliate toolkit** — product boxes, pros/cons, comparison tables, ratings, auto disclosure, nofollow/sponsored.
 - **Built-in SEO** — meta, canonical, OG/Twitter, breadcrumbs, TOC, reading progress; auto-defers to RankMath/Yoast.
 - **Small-hosting friendly** — no jQuery, ~4KB vanilla JS, system fonts by default, lazy ads/iframes.
-- **Shortcodes** — `[recipe_card]` `[howto]` `[product_box]` `[pros_cons]` `[star_rating]` `[faq]` `[cta_button]` `[compare]` `[disclosure]` `[circlepress_ad]`
+- **GDPR consent** — cookie banner (bar/card), strict ad+video blocking, Consent Mode v2, `[cookie_settings]`.
+- **Shortcodes** — `[recipe_card]` `[howto]` `[product_box]` `[pros_cons]` `[star_rating]` `[faq]` `[cta_button]` `[compare]` `[disclosure]` `[circlepress_ad]` `[cookie_settings]`
 
 ## Preview the styles (no WordPress needed)
 

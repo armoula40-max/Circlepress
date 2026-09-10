@@ -4,7 +4,7 @@ Theme URI: https://circlepress.example.com/
 Author: CirclePress Team
 Author URI: https://circlepress.example.com/
 Description: CirclePress is a lightweight, SEO-first, multi-niche WordPress magazine theme. 9 built-in niche designs (Food & Recipes, Crochet, Pets, Nails, Furniture, Home Decor, DIY & Crafts, Beauty, Gardening) — each with its own style, homepage template, single-post features and Schema.org markup. Ad-ready (AdSense, Ezoic, Mediavine), affiliate-ready, Gutenberg-ready, translation-ready and built for small shared hosting.
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -355,3 +355,29 @@ body.niche-gardening .cp-card__cat{background:var(--cp-primary)}
   .cp-single{border:0;padding:0}
   .cp-layout{grid-template-columns:1fr}
 }
+
+/* ---- Cookie consent (GDPR) ---- */
+.cp-consent{position:fixed;z-index:500;background:var(--cp-surface)}
+.cp-consent--bar{left:0;right:0;bottom:0;border-top:1px solid var(--cp-border);box-shadow:0 -8px 30px rgba(0,0,0,.12);padding:16px 0;max-height:70vh;overflow-y:auto}
+.cp-consent--card{left:20px;bottom:20px;max-width:390px;border:1px solid var(--cp-border);border-radius:var(--cp-radius);box-shadow:var(--cp-shadow);padding:20px;max-height:80vh;overflow-y:auto}
+.cp-consent__inner{max-width:var(--cp-container);margin:0 auto;padding:0 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.cp-consent--card .cp-consent__inner{padding:0;flex-direction:column;align-items:stretch}
+.cp-consent__text{flex:1;min-width:240px;font-size:.88rem;color:var(--cp-muted)}
+.cp-consent__text strong{color:var(--cp-text);display:block;margin-bottom:4px;font-size:.95rem}
+.cp-consent__text p{margin:0}
+.cp-consent__btns{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.cp-consent__prefs{flex-basis:100%;display:flex;gap:14px;flex-wrap:wrap;align-items:center;background:var(--cp-surface-2);border:1px solid var(--cp-border);border-radius:var(--cp-radius-sm);padding:12px 16px;font-size:.85rem}
+.cp-consent__prefs[hidden]{display:none}
+.cp-switch{display:inline-flex;gap:8px;align-items:center;cursor:pointer;font-weight:600;color:var(--cp-text)}
+.cp-switch input{width:18px;height:18px;accent-color:var(--cp-primary)}
+.cp-consent-fab{position:fixed;left:16px;bottom:16px;z-index:499;width:44px;height:44px;border-radius:50%;background:var(--cp-surface);border:1px solid var(--cp-border);box-shadow:var(--cp-shadow);cursor:pointer;font-size:1.2rem;line-height:1}
+.cp-consent-fab[hidden]{display:none}
+.cp-consent-fab:hover{transform:scale(1.08)}
+/* Click-to-load video facade (strict mode) */
+.cp-video-facade{position:relative;aspect-ratio:16/9;background:#111;border-radius:var(--cp-radius-sm);overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;margin:1.2em 0}
+.cp-video-facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7}
+.cp-video-facade__play{position:relative;z-index:2;width:70px;height:70px;border-radius:50%;border:0;background:var(--cp-primary);color:#fff;font-size:1.5rem;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.cp-video-facade__play:hover{transform:scale(1.06)}
+.cp-video-facade__note{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#fff;font-size:.75rem;z-index:2;opacity:.85;padding:0 12px}
+@media(max-width:560px){.cp-consent--card{left:12px;right:12px;bottom:12px;max-width:none}}
+@media print{.cp-consent,.cp-consent-fab,.cp-video-facade__note{display:none!important}}
