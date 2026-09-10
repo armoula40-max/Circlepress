@@ -2,7 +2,11 @@
  * CirclePress GDPR consent — vanilla JS, no dependencies (~3KB).
  * Stores {analytics, marketing} in cookie + localStorage for 180 days.
  */
-(function () {
+function __circlepressReady(fn) {
+	if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', fn); }
+	else { fn(); }
+}
+__circlepressReady(function () {
 	'use strict';
 
 	var COOKIE = 'cp_consent';
@@ -134,4 +138,4 @@
 			f.appendChild(ifr);
 		});
 	});
-})();
+});

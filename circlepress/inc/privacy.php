@@ -268,7 +268,8 @@ function circlepress_consent_banner() {
 	<button type="button" id="cp-consent-fab" class="cp-consent-fab" aria-label="<?php esc_attr_e( 'Cookie settings', 'circlepress' ); ?>" title="<?php esc_attr_e( 'Cookie settings', 'circlepress' ); ?>"<?php echo $has_choice ? '' : ' hidden'; ?>>🍪</button>
 	<?php
 }
-add_action( 'wp_footer', 'circlepress_consent_banner', 30 );
+/* Priority <20: banner HTML must exist before footer scripts execute (they bind immediately). */
+add_action( 'wp_footer', 'circlepress_consent_banner', 15 );
 
 /* ================= Shortcode: [cookie_settings] ================= */
 function circlepress_sc_cookie_settings( $atts ) {

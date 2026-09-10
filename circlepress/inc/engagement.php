@@ -82,7 +82,7 @@ function circlepress_display_head() {
 	if ( ! get_theme_mod( 'circlepress_darkmode', true ) && ! get_theme_mod( 'circlepress_fontsize', true ) ) {
 		return;
 	}
-	echo "<script>try{var t=localStorage.getItem('cp_theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}var f=parseFloat(localStorage.getItem('cp_font')||'1');if(f&&f!==1){document.documentElement.style.fontSize=(16*f)+'px';}}catch(e){}</script>\n";
+	echo "<script>try{var t=localStorage.getItem('cp_theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}var f=parseFloat(localStorage.getItem('cp_font')||'1');if(f&&f!==1){document.documentElement.style.zoom=f;}}catch(e){}</script>\n";
 }
 add_action( 'wp_head', 'circlepress_display_head', 0 );
 
@@ -103,7 +103,8 @@ function circlepress_display_dock() {
 	}
 	echo '</div>';
 }
-add_action( 'wp_footer', 'circlepress_display_dock', 40 );
+/* Priority <20: dock HTML must exist before footer scripts execute (they bind immediately). */
+add_action( 'wp_footer', 'circlepress_display_dock', 15 );
 
 /* ================= #11 Action bar ================= */
 function circlepress_action_bar() {

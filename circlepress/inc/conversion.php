@@ -25,7 +25,8 @@ function circlepress_nextpost_sentinel() {
 	$count = max( 1, min( 5, (int) get_theme_mod( 'circlepress_nextpost_count', 2 ) ) );
 	echo '<div id="cp-next-sentinel" data-id="' . esc_attr( get_the_ID() ) . '" data-remaining="' . esc_attr( $count ) . '" aria-hidden="true"></div>';
 }
-add_action( 'wp_footer', 'circlepress_nextpost_sentinel', 35 );
+/* Priority <20: sentinel must exist before footer scripts execute (same binding issue). */
+add_action( 'wp_footer', 'circlepress_nextpost_sentinel', 15 );
 
 function circlepress_ajax_nextpost() {
 	check_ajax_referer( 'circlepress_extra', 'nonce' );

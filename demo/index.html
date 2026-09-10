@@ -139,15 +139,52 @@ body{background:#f4f2ee}
     <div class="demo-cards"><div class="demo-card"><div class="ph">🍅</div><div class="tx"><b>Vegetables</b>Grow food…</div></div><div class="demo-card"><div class="ph">🌷</div><div class="tx"><b>Flowers</b>Color…</div></div><div class="demo-card"><div class="ph">🪴</div><div class="tx"><b>Indoor</b>Houseplants…</div></div></div>
   </section>
 
-  <p style="text-align:center;color:#666;padding:20px">⭕ CirclePress 2.0.1 — lightweight · SEO-first · ad &amp; affiliate ready · GDPR banner included · <a href="../circlepress/readme.txt">readme</a></p>
+  <p style="text-align:center;color:#666;padding:20px">⭕ CirclePress 2.0.2 — lightweight · SEO-first · ad &amp; affiliate ready · GDPR banner included · <a href="../circlepress/readme.txt">readme</a></p>
 </div>
 
-<!-- Static mock of the GDPR consent banner (functional in WordPress: Accept / Reject / Customize + strict ad blocking) -->
-<div class="cp-consent cp-consent--bar" role="dialog" aria-label="Cookie consent demo">
+<!-- Interactive demo: consent banner + display dock (same behavior as the WordPress theme) -->
+<div class="cp-consent cp-consent--bar" id="demo-consent" role="dialog" aria-label="Cookie consent demo">
   <div class="cp-consent__inner">
     <div class="cp-consent__text"><strong>🍪 We value your privacy</strong><p>Demo preview — in WordPress this banner blocks ads &amp; videos until consent (Strict GDPR mode + Consent Mode v2). <a href="#">Learn more</a></p></div>
-    <div class="cp-consent__btns"><span class="cp-btn cp-btn--sm">Accept all</span><span class="cp-btn cp-btn--sm cp-btn--outline">Reject</span><span class="cp-btn cp-btn--sm cp-btn--outline">Customize</span></div>
+    <div class="cp-consent__btns"><button type="button" class="cp-btn cp-btn--sm" data-demo="accept">Accept all</button><button type="button" class="cp-btn cp-btn--sm cp-btn--outline" data-demo="reject">Reject</button><button type="button" class="cp-btn cp-btn--sm cp-btn--outline" data-demo="custom">Customize</button></div>
+    <div class="cp-consent__prefs" hidden>
+      <label class="cp-switch"><input type="checkbox" checked disabled> Necessary (always on)</label>
+      <label class="cp-switch"><input type="checkbox" data-demo-pref="analytics"> Analytics</label>
+      <label class="cp-switch"><input type="checkbox" data-demo-pref="marketing"> Marketing / Ads</label>
+      <button type="button" class="cp-btn cp-btn--sm" data-demo="save">Save choices</button>
+    </div>
   </div>
 </div>
+<button type="button" id="demo-consent-fab" class="cp-consent-fab" aria-label="Cookie settings" hidden>🍪</button>
+<div class="cp-dock" role="toolbar" aria-label="Display options demo">
+  <button type="button" data-demo-dock="theme" aria-label="Toggle dark mode" title="Dark mode">🌙</button>
+  <button type="button" data-demo-dock="inc" aria-label="Increase font size">A+</button>
+  <button type="button" data-demo-dock="dec" aria-label="Decrease font size">A−</button>
+</div>
+<script>
+(function(){
+  'use strict';
+  var consent=document.getElementById('demo-consent'),fab=document.getElementById('demo-consent-fab');
+  function hideConsent(){consent.hidden=true;fab.hidden=false;}
+  document.querySelectorAll('[data-demo]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var a=b.getAttribute('data-demo');
+      if(a==='custom'){var p=consent.querySelector('.cp-consent__prefs');p.hidden=!p.hidden;}
+      else{hideConsent();}
+    });
+  });
+  fab.addEventListener('click',function(){consent.hidden=false;fab.hidden=true;});
+  var themeBtn=document.querySelector('[data-demo-dock="theme"]');
+  themeBtn.addEventListener('click',function(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    if(dark){document.documentElement.removeAttribute('data-theme');themeBtn.textContent='🌙';}
+    else{document.documentElement.setAttribute('data-theme','dark');themeBtn.textContent='☀️';}
+  });
+  var f=1;
+  function setF(v){f=Math.min(1.25,Math.max(0.85,Math.round(v*100)/100));document.documentElement.style.zoom=(f===1?'':String(f));}
+  document.querySelector('[data-demo-dock="inc"]').addEventListener('click',function(){setF(f+0.05);});
+  document.querySelector('[data-demo-dock="dec"]').addEventListener('click',function(){setF(f-0.05);});
+})();
+</script>
 </body>
 </html>

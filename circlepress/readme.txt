@@ -3,7 +3,7 @@ Contributors: circlepress
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, magazine, food, recipes, crafts, diy, beauty, home-decor, gardening, pets, seo, adsense, affiliate, lightweight, responsive, translation-ready
@@ -71,6 +71,11 @@ Use the shortcodes: [top_list][rank_item], [coupon], [gift_grid][gift_item]. Ful
 Yes — enable the cookie banner (Customizer → Privacy & Consent). Strict mode blocks ads and video embeds until consent, and Google Consent Mode v2 signals are sent automatically. Remember to publish a Privacy Policy page.
 
 == Changelog ==
+
+= 2.0.2 =
+* FIX: dark mode, font size (A+/A-) and consent buttons (Accept/Reject/Customize) now work — footer markup prints before scripts + JS waits for DOM ready.
+* FIX: auto-load next post sentinel printed too late (same root cause).
+* IMPROVED: font size buttons now scale the whole page instead of rem-only text.
 
 = 2.0.1 =
 * HOTFIX: mobile overflow — no more cut-off content on phones (shrinkable grids, wrapping recipe meta, contained ads/embeds, safe long words).

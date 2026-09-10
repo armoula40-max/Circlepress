@@ -3,7 +3,11 @@
  * Next-post loader, ratings, bookmarks, TTS, dark mode, font size,
  * coupons, servings scaler, gift/AZ filters, shop-look toggles.
  */
-(function () {
+function __circlepressReady(fn) {
+	if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', fn); }
+	else { fn(); }
+}
+__circlepressReady(function () {
 	'use strict';
 
 	var cfg = window.circlepressExtra || {};
@@ -198,7 +202,7 @@
 	}
 	function setFont(f) {
 		f = Math.min(1.25, Math.max(0.85, Math.round(f * 100) / 100));
-		document.documentElement.style.fontSize = (16 * f) + 'px';
+		document.documentElement.style.zoom = (f === 1 ? '' : String(f));
 		try { localStorage.setItem('cp_font', String(f)); } catch (e) {}
 	}
 	var fInc = $('[data-cp-font-inc]');
@@ -365,4 +369,4 @@
 	}
 	if (azSearch) { azSearch.addEventListener('input', azApply); }
 	if (azCat) { azCat.addEventListener('change', azApply); }
-})();
+});
