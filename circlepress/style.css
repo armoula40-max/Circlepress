@@ -4,7 +4,7 @@ Theme URI: https://circlepress.example.com/
 Author: CirclePress Team
 Author URI: https://circlepress.example.com/
 Description: CirclePress is a lightweight, SEO-first, multi-niche WordPress magazine theme. 9 built-in niche designs (Food & Recipes, Crochet, Pets, Nails, Furniture, Home Decor, DIY & Crafts, Beauty, Gardening) — each with its own style, homepage template, single-post features and Schema.org markup. Ad-ready (AdSense, Ezoic, Mediavine), affiliate-ready, Gutenberg-ready, translation-ready and built for small shared hosting.
-Version: 2.0.0
+Version: 2.0.1
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -723,3 +723,94 @@ html[data-theme="dark"] .cp-search-overlay{background:rgba(10,10,14,.97)}
   .cp-search-overlay .cp-btn{justify-content:center}
   .cp-topbar__social{display:none}
 }
+
+/* ============================================================
+   CirclePress 2.0.1 — mobile overflow hotfix (zero cut-offs)
+   ============================================================ */
+/* 1. Every grid track can shrink below content size. */
+.cp-layout{grid-template-columns:minmax(0,1fr) 320px}
+.cp-layout--no-sidebar{grid-template-columns:minmax(0,1fr)}
+.cp-layout--left{grid-template-columns:320px minmax(0,1fr)}
+.cp-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cp-grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cp-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cp-hero--magazine{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.cp-hero--split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.cp-show-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.cp-card--horizontal{grid-template-columns:280px minmax(0,1fr)}
+.cp-proscons{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.cp-related__grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cp-footer__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cp-rank__item{grid-template-columns:64px 130px minmax(0,1fr)}
+.cp-product{grid-template-columns:150px minmax(0,1fr)}
+.cp-recipe__head{grid-template-columns:220px minmax(0,1fr)}
+.cp-recipe__cols{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+.cp-az__group ul{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+/* 2. Children shrink + long words break safely. */
+.cp-layout>*,.cp-grid>*,.cp-card,.cp-rank__body,.cp-show__text,.cp-recipe__intro,.cp-recipe__ings,.cp-recipe__steps{min-width:0}
+.cp-entry,.cp-card__body h3,.cp-single__title,.cp-hero__overlay h2,.cp-hero__overlay h3,.cp-toc,.cp-faq,.cp-comments,.cp-sources,.cp-az__group li,.cp-coupon__code,.cp-rank__desc,.cp-show__text h2{overflow-wrap:anywhere}
+.cp-entry pre{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+.cp-entry code{overflow-wrap:anywhere}
+/* 3. Form controls never force width. */
+input,select,textarea{max-width:100%}
+.cp-hero--bold form,.cp-404 form{flex-wrap:wrap}
+.cp-hero--bold form input[type=search]{flex:1 1 220px;min-width:0}
+.cp-404 form input[type=search]{flex:1 1 200px;min-width:0}
+.cp-search-overlay input[type=search]{width:100%}
+/* 4. Header / topbar shrink. */
+.cp-logo,.cp-logo__word,.cp-logo>*{min-width:0}
+.cp-logo__word{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.cp-header__actions{flex-shrink:0}
+.cp-topbar__text{min-width:0}
+/* 5. Section heads wrap. */
+.cp-section__head{flex-wrap:wrap;row-gap:6px}
+.cp-section__head h2{min-width:0}
+.cp-actionbar{max-width:100%}
+/* 6. Recipe meta strip MUST wrap (top cut-off culprit). */
+.cp-recipe__meta{flex-wrap:wrap}
+.cp-recipe__meta>div{flex:1 1 120px;min-width:0}
+/* 7. Gutenberg wide/full safety on phones. */
+@media(max-width:820px){
+  .alignwide{max-width:100%}
+  .alignfull{max-width:100vw;margin-inline:0}
+}
+/* 8. Repeat responsive grids with shrinkable tracks. */
+@media(max-width:1024px){
+  .cp-layout{grid-template-columns:minmax(0,1fr)}
+  .cp-sidebar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .cp-grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cp-hero--magazine{grid-template-columns:minmax(0,1fr)}
+  .cp-hero__side{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .cp-footer__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media(max-width:820px){
+  .cp-grid--3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .cp-card--horizontal{grid-template-columns:minmax(0,1fr)}
+  .cp-hero--split{grid-template-columns:minmax(0,1fr)}
+  .cp-proscons{grid-template-columns:minmax(0,1fr)}
+  .cp-related__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media(max-width:640px){
+  .cp-show-row,.cp-recipe__cols,.cp-recipe__head{grid-template-columns:minmax(0,1fr)}
+  .cp-recipe__meta>div{flex:1 1 40%}
+  .cp-rank__item{grid-template-columns:52px minmax(0,1fr)}
+}
+@media(max-width:560px){
+  .cp-grid--3,.cp-grid--2,.cp-grid--4{grid-template-columns:minmax(0,1fr)}
+  .cp-sidebar,.cp-footer__grid,.cp-related__grid{grid-template-columns:minmax(0,1fr)}
+  .cp-product,.cp-hero__side,.cp-az__group ul{grid-template-columns:minmax(0,1fr)}
+  .cp-hero--split{grid-template-columns:minmax(0,1fr)}
+}
+/* 9. Fixed-size ads / embeds can never stretch the page. */
+.cp-ad{max-width:100%;overflow:hidden}
+.cp-ad__code{max-width:100%}
+.cp-ad iframe,.cp-ad img,.cp-ad ins{max-width:100%}
+.cp-entry .twitter-tweet,.cp-entry .tiktok-embed,.cp-entry .instagram-media{max-width:100%!important;min-width:0!important;margin-inline:auto}
+/* 10. Tooltips, consent, comments, misc. */
+.cp-look__tip{max-width:min(230px,72vw)}
+.cp-consent__text{min-width:min(240px,100%)}
+.cp-author img{flex-shrink:0}
+.cp-comments .comment-content{overflow-wrap:anywhere}
+/* 11. Skip link uses clipping (never off-canvas offsets). */
+.skip-link{left:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;padding:0;border:0}
+.skip-link:focus{width:auto;height:auto;clip:auto;overflow:visible;padding:10px 16px}

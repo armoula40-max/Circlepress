@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CirclePress — Mobile Overflow Stress Test (open on your phone)</title>
+<link rel="stylesheet" href="../circlepress/style.css">
+<style>
+body{background:#fff}.test-wrap{max-width:1200px;margin:0 auto;padding:16px}
+.test-ok{background:#e7f6e7;border:1px solid #8fd08f;border-radius:12px;padding:14px 18px;margin:0 0 18px;font-size:.9rem}
+.test-sec{border:1px dashed #bbb;border-radius:12px;padding:16px;margin:0 0 18px}
+.test-sec>h2{font-size:1rem!important;font-family:Arial!important;color:#555!important;margin:0 0 12px!important}
+</style>
+</head>
+<body>
+<div class="test-wrap">
+  <h1>Mobile stress test</h1>
+  <div class="test-ok"><b>How to use:</b> open this page on your phone (or DevTools → 360×740). If you can scroll <b>sideways</b>, something still overflows — everything below is intentionally nasty content. Page must stay fixed with zero horizontal scroll.</div>
+
+  <div class="test-sec"><h2>1. Long unbroken heading + URL</h2>
+    <div class="cp-single"><h1 class="cp-single__title">Supercalifragilisticexpialidocious-antidisestablishmentarianism-pneumonoultramicroscopicsilicovolcanoconiosis</h1>
+    <div class="cp-entry"><p>Visit https://example.com/very/long/path/that/never/breaks/and-keeps-going-forever-and-ever-and-ever-12345678901234567890 for details.</p>
+    <pre>const supercalifragilisticexpialidocious_variable_name = "antidisestablishmentarianism-pneumonoultramicroscopicsilicovolcanoconiosis";</pre></div></div>
+  </div>
+
+  <div class="test-sec"><h2>2. Recipe meta strip (was the main culprit)</h2>
+    <div class="cp-box cp-recipe"><div class="cp-recipe__meta"><div><span>Prep Time</span><b>15 min</b></div><div><span>Cook Time</span><b>20 min</b></div><div><span>Total Time</span><b>35 min</b></div><div><span>Servings</span><b>4</b></div><div><span>Calories</span><b>540 kcal</b></div><div><span>Course</span><b>Dinner</b></div><div><span>Cuisine</span><b>Italian</b></div></div></div>
+  </div>
+
+  <div class="test-sec"><h2>3. Wide comparison table</h2>
+    <table class="cp-compare"><thead><tr><th>Feature</th><th>Option Alpha Pro Max Plus</th><th>Option Beta Ultra Supreme</th><th>Option Gamma Deluxe Edition</th></tr></thead><tbody><tr><td>Price-per-unit-in-dollars</td><td>$199.99</td><td>$249.99</td><td>$299.99</td></tr></tbody></table>
+  </div>
+
+  <div class="test-sec"><h2>4. Rank item + coupon + grids</h2>
+    <ol class="cp-rank"><li class="cp-rank__item cp-rank--top1"><span class="cp-rank__num">1</span><div class="cp-rank__body"><h3>Extraordinarilylongproductnamethatneverends Pro Max 3000</h3><div class="cp-product__price">$899.99</div></div></li></ol>
+    <div class="cp-coupon"><div class="cp-coupon__row"><button type="button" class="cp-coupon__code">SUPERLONGCOUPONCODE2026XXL <small>⧉</small></button></div></div>
+    <div class="cp-grid cp-grid--3"><div class="cp-card"><div class="cp-card__body"><h3>Pneumonoultramicroscopicsilicovolcanoconiosis guide</h3><p class="cp-card__excerpt">Excerpt here.</p></div></div><div class="cp-card"><div class="cp-card__body"><h3>Card 2</h3></div></div><div class="cp-card"><div class="cp-card__body"><h3>Card 3</h3></div></div></div>
+  </div>
+
+  <div class="test-sec"><h2>5. Fixed-size ad iframe (728px leaderboard)</h2>
+    <div class="cp-ad"><div class="cp-ad__label">Advertisement</div><div class="cp-ad__code"><iframe src="about:blank" width="728" height="90" title="ad"></iframe></div></div>
+  </div>
+
+  <div class="test-sec"><h2>6. Action bar (must scroll inside itself)</h2>
+    <div class="cp-actionbar"><a class="cp-btn cp-btn--sm" href="#">Jump to Recipe</a><a class="cp-btn cp-btn--sm" href="#">Jump to How-To</a><a class="cp-btn cp-btn--sm cp-btn--outline" href="#">Video</a><a class="cp-btn cp-btn--sm cp-btn--outline" href="#">Listen</a><a class="cp-btn cp-btn--sm cp-btn--outline" href="#">Save</a><a class="cp-btn cp-btn--sm cp-btn--outline" href="#">Print</a><a class="cp-btn cp-btn--sm cp-btn--outline" href="#">Pin</a></div>
+  </div>
+
+  <div class="test-sec"><h2>7. Newsletter + search forms</h2>
+    <section class="cp-newsletter"><h2>Newsletter title here</h2><form onsubmit="return false"><input type="email" placeholder="Your email address"><button class="cp-btn cp-btn--secondary" type="submit">Subscribe</button></form></section>
+  </div>
+
+  <p style="text-align:center;color:#666">If nothing above forces sideways scrolling on a 360px screen → PASS ✅</p>
+</div>
+</body>
+</html>
