@@ -153,6 +153,14 @@ function circlepress_page_box_html( $post ) {
 		echo '<option value="' . esc_attr( $id ) . '"' . selected( $current, $id, false ) . '>' . esc_html( $n['icon'] . ' ' . $n['label'] ) . '</option>';
 	}
 	echo '</select>';
+	$home_layout = get_post_meta( $post->ID, '_cp_home_layout', true );
+	echo '<p style="margin-top:12px"><label for="_cp_home_layout"><strong>' . esc_html__( 'Homepage layout (for home templates)', 'circlepress' ) . '</strong></label></p>';
+	echo '<select id="_cp_home_layout" name="_cp_home_layout" style="width:100%">';
+	echo '<option value="">' . esc_html__( '— Use global layout —', 'circlepress' ) . '</option>';
+	foreach ( circlepress_home_layouts() as $lid => $llabel ) {
+		echo '<option value="' . esc_attr( $lid ) . '"' . selected( $home_layout, $lid, false ) . '>' . esc_html( $llabel ) . '</option>';
+	}
+	echo '</select>';
 	$hide_ads = get_post_meta( $post->ID, '_cp_hide_ads', true );
 	echo '<p><label><input type="checkbox" name="_cp_hide_ads" value="1"' . checked( $hide_ads, '1', false ) . '> ' . esc_html__( 'Hide ads on this page', 'circlepress' ) . '</label></p>';
 }
@@ -168,7 +176,7 @@ function circlepress_save_meta( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
 		return;
 	}
-	$keys = array( '_cp_niche_override', '_cp_hide_ads' );
+	$keys = array( '_cp_niche_override', '_cp_home_layout', '_cp_hide_ads' );
 	foreach ( circlepress_meta_fields() as $group ) {
 		foreach ( $group['fields'] as $key => $field ) {
 			$keys[ $key ] = isset( $field['type'] ) ? $field['type'] : 'text';

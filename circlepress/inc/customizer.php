@@ -89,6 +89,17 @@ function circlepress_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 'circlepress_hero_sub', array( 'label' => __( 'Hero subtitle', 'circlepress' ), 'section' => 'circlepress_home', 'type' => 'textarea' ) );
 	$wp_customize->add_setting( 'circlepress_hero_image', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'circlepress_hero_image', array( 'label' => __( 'Hero image (split style)', 'circlepress' ), 'section' => 'circlepress_home' ) ) );
+	$wp_customize->add_setting( 'circlepress_home_layout', array( 'default' => 'magazine', 'sanitize_callback' => 'circlepress_sanitize_home_layout' ) );
+	$wp_customize->add_control(
+		'circlepress_home_layout',
+		array(
+			'label'       => __( 'Homepage layout shape', 'circlepress' ),
+			'description' => __( 'Magazine = niche sections. Grid/List/Showcase = alternative shapes. Can be overridden per page (Page Options).', 'circlepress' ),
+			'section'     => 'circlepress_home',
+			'type'        => 'select',
+			'choices'     => circlepress_home_layouts(),
+		)
+	);
 	foreach ( array(
 		'hero'       => __( 'Show hero', 'circlepress' ),
 		'categories' => __( 'Show category chips', 'circlepress' ),

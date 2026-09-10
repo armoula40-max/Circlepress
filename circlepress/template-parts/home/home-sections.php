@@ -10,6 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$home_layout = function_exists( 'circlepress_home_layout' ) ? circlepress_home_layout() : 'magazine';
+if ( 'magazine' !== $home_layout ) {
+	get_template_part( 'template-parts/home/home-alt' );
+	return;
+}
+
 $niche_id = circlepress_get_current_niche();
 $niche    = circlepress_get_niche( $niche_id );
 $sections = isset( $niche['sections'] ) ? $niche['sections'] : array( 'hero', 'featured', 'latest' );

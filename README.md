@@ -29,11 +29,14 @@ Each niche has its own **style, homepage template, single-post features and Sche
 ## Highlights
 
 - **12 page templates** — one homepage per niche + full width + landing.
+- **4 homepage layouts** — Magazine / Grid / List / Showcase, global + per-page override.
+- **6 Gutenberg patterns** — ready homepage sections (CirclePress category in the editor).
+- **Fully mobile-ready** — touch submenus, scrollable tables, responsive videos, safe-area support, 360px+ screens.
 - **6 ad slots** (header, below-title, in-content auto, sidebar, footer, sticky) — AdSense / Ezoic / Mediavine ready.
 - **Affiliate toolkit** — product boxes, pros/cons, comparison tables, ratings, auto disclosure, nofollow/sponsored.
-- **Built-in SEO** — meta, canonical, OG/Twitter, breadcrumbs, TOC, reading progress; auto-defers to RankMath/Yoast.
-- **Small-hosting friendly** — no jQuery, ~4KB vanilla JS, system fonts by default, lazy ads/iframes.
 - **GDPR consent** — cookie banner (bar/card), strict ad+video blocking, Consent Mode v2, `[cookie_settings]`.
+- **Built-in SEO** — meta, canonical, OG/Twitter, breadcrumbs, TOC, reading progress; auto-defers to RankMath/Yoast.
+- **Small-hosting friendly** — no jQuery, tiny vanilla JS, system fonts by default, lazy ads/iframes.
 - **Shortcodes** — `[recipe_card]` `[howto]` `[product_box]` `[pros_cons]` `[star_rating]` `[faq]` `[cta_button]` `[compare]` `[disclosure]` `[circlepress_ad]` `[cookie_settings]`
 
 ## Preview the styles (no WordPress needed)
@@ -57,9 +60,10 @@ circlepress/
 ├── style.css, rtl.css, screenshot.png, readme.txt
 ├── functions.php, header.php, footer.php, sidebar.php, comments.php
 ├── index.php, front-page.php, home.php, single.php, page.php, archive.php, search.php, 404.php
-├── inc/            # setup, niches, customizer, seo, schema, ads, meta-boxes, shortcodes, template-tags, performance
-├── template-parts/ # components, home sections, content
+├── inc/            # setup, niches, customizer, seo, schema, ads, meta-boxes,
+│                   # shortcodes, template-tags, performance, privacy, home-layouts, patterns
+├── template-parts/ # components, home sections (+alt layouts), content
 ├── page-templates/ # 9 niche homes + generic home + fullwidth + landing
-├── assets/         # css/editor.css, js/main.js (vanilla)
+├── assets/         # css/editor.css, js/main.js + consent.js (vanilla)
 └── languages/      # circlepress.pot
 ```
