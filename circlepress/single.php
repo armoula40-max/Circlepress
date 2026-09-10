@@ -46,13 +46,7 @@ get_header();
 						<?php endif; ?>
 					</div>
 
-					<?php if ( $has_recipe || $has_howto ) : ?>
-						<div class="cp-jump">
-							<?php if ( $has_recipe ) : ?><a class="cp-btn cp-btn--sm" href="#cp-recipe">⬇ <?php esc_html_e( 'Jump to Recipe', 'circlepress' ); ?></a><?php endif; ?>
-							<?php if ( $has_howto ) : ?><a class="cp-btn cp-btn--sm cp-btn--secondary" href="#cp-howto">⬇ <?php esc_html_e( 'Jump to Instructions', 'circlepress' ); ?></a><?php endif; ?>
-							<button class="cp-btn cp-btn--sm cp-btn--outline" onclick="window.print();return false;">🖨 <?php esc_html_e( 'Print', 'circlepress' ); ?></button>
-						</div>
-					<?php endif; ?>
+					<?php circlepress_action_bar(); ?>
 
 					<?php circlepress_ad( 'below_title' ); ?>
 

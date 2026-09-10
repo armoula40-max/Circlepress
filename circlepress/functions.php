@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CIRCLEPRESS_VERSION', '1.2.0' );
+define( 'CIRCLEPRESS_VERSION', '1.3.0' );
 define( 'CIRCLEPRESS_DIR', get_template_directory() );
 define( 'CIRCLEPRESS_URI', get_template_directory_uri() );
 
@@ -27,3 +27,6 @@ require CIRCLEPRESS_DIR . '/inc/performance.php';
 require CIRCLEPRESS_DIR . '/inc/privacy.php';
 require CIRCLEPRESS_DIR . '/inc/home-layouts.php';
 require CIRCLEPRESS_DIR . '/inc/patterns.php';
+require CIRCLEPRESS_DIR . '/inc/conversion.php';
+require CIRCLEPRESS_DIR . '/inc/engagement.php';
+require CIRCLEPRESS_DIR . '/inc/seo-plus.php';

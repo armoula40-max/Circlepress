@@ -4,7 +4,7 @@ Theme URI: https://circlepress.example.com/
 Author: CirclePress Team
 Author URI: https://circlepress.example.com/
 Description: CirclePress is a lightweight, SEO-first, multi-niche WordPress magazine theme. 9 built-in niche designs (Food & Recipes, Crochet, Pets, Nails, Furniture, Home Decor, DIY & Crafts, Beauty, Gardening) — each with its own style, homepage template, single-post features and Schema.org markup. Ad-ready (AdSense, Ezoic, Mediavine), affiliate-ready, Gutenberg-ready, translation-ready and built for small shared hosting.
-Version: 1.2.0
+Version: 1.3.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -454,3 +454,120 @@ html,body{overflow-x:clip}
   .cp-card:hover{transform:none}
   a{-webkit-tap-highlight-color:rgba(0,0,0,.08)}
 }
+
+/* ============================================================
+   CirclePress 1.3.0 — conversion kit, engagement, dark mode
+   ============================================================ */
+/* Anchor offset under sticky header (TOC / jump links fix). */
+[id]{scroll-margin-top:96px}
+/* ---- Sticky action bar ---- */
+.cp-actionbar{position:sticky;top:72px;z-index:120;display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:999px;padding:8px 12px;margin:0 0 18px;box-shadow:var(--cp-shadow)}
+.cp-actionbar .cp-btn--sm{padding:.5em 1em;font-size:.8rem}
+.cp-actionbar [data-cp-save].is-saved{border-color:#e60023;color:#e60023!important}
+.cp-actionbar [data-cp-listen].is-speaking{background:var(--cp-secondary);border-color:var(--cp-secondary);color:#fff!important}
+@media(max-width:820px){.cp-actionbar{top:62px;border-radius:18px}}
+/* ---- Video box ---- */
+.cp-video-box{margin:26px 0}
+.cp-video-box iframe{width:100%;aspect-ratio:16/9;height:auto;border-radius:var(--cp-radius-sm);border:0}
+/* ---- Visitor ratings ---- */
+.cp-rate__row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.cp-rate__stars{display:inline-flex;gap:2px}
+.cp-rate__stars button{background:none;border:0;font-size:1.9rem;color:#d8d8d8;cursor:pointer;padding:2px;line-height:1;transition:transform .1s}
+.cp-rate__stars button.lit,.cp-rate__stars button:hover{color:#f5a623;transform:scale(1.15)}
+.cp-rate__stars button:disabled{cursor:default}
+.cp-rate__stars button:disabled.lit{color:#f5a623}
+.cp-rate__info{font-size:.9rem;color:var(--cp-muted)}
+.cp-rate__msg{font-size:.88rem;color:var(--cp-secondary);font-weight:700;margin:8px 0 0;min-height:1.2em}
+/* ---- Reviewer + sources (E-E-A-T) ---- */
+.cp-reviewer{background:#eef7ee;border:1px solid #bfe0bf;border-radius:var(--cp-radius-sm);padding:12px 18px;margin:22px 0;font-size:.9rem;color:#1f4d38}
+.cp-sources{background:var(--cp-surface-2);border:1px solid var(--cp-border);border-radius:var(--cp-radius);padding:18px 24px;margin:22px 0;font-size:.88rem}
+.cp-sources h3{font-size:1rem;margin:0 0 8px}
+.cp-sources ol{margin:0;padding-inline-start:22px;color:var(--cp-muted)}
+/* ---- Next-post loader ---- */
+.cp-next-div{border:0;border-top:3px dashed var(--cp-border);margin:44px 0 18px}
+.cp-next-label{text-align:center;font-size:.95rem;color:var(--cp-muted)}
+.cp-next-label a{font-weight:800}
+.cp-next-appended{margin-top:14px}
+/* ---- Listicles ---- */
+.cp-toplist{margin:26px 0}
+.cp-rank{list-style:none!important;margin:0!important;padding:0!important;display:grid;gap:16px;counter-reset:rank}
+.cp-rank__item{position:relative;display:grid;grid-template-columns:64px 130px 1fr;gap:16px;align-items:center;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:var(--cp-radius);padding:18px;margin:0!important}
+.cp-rank__num{width:52px;height:52px;border-radius:50%;background:var(--cp-surface-2);border:2px solid var(--cp-border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;font-family:var(--cp-font-heading)}
+.cp-rank--top1 .cp-rank__num{background:#ffd700;border-color:#c9a227;color:#5b4a00}
+.cp-rank--top2 .cp-rank__num{background:#e8e8e8;border-color:#b5b5b5;color:#444}
+.cp-rank--top3 .cp-rank__num{background:#f0c8a0;border-color:#c98a4b;color:#5b3200}
+.cp-rank__img{width:130px;height:110px;object-fit:cover;border-radius:var(--cp-radius-sm)}
+.cp-rank__body h3{margin:0 0 6px;font-size:1.15rem}
+.cp-rank__badge{display:inline-block;background:var(--cp-text);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:8px}
+.cp-rank__desc{font-size:.92rem;color:var(--cp-muted)}
+.cp-rank__desc p{margin:0 0 .6em}
+/* ---- Shop the look ---- */
+.cp-look{position:relative;border-radius:var(--cp-radius);overflow:hidden;margin:26px 0}
+.cp-look>img{display:block;width:100%}
+.cp-look__dot{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:rgba(255,255,255,.92);border:2px solid var(--cp-primary);cursor:pointer;padding:0;z-index:2}
+.cp-look__pulse{position:absolute;inset:8px;border-radius:50%;background:var(--cp-primary);animation:cp-ping 1.8s ease-out infinite}
+@keyframes cp-ping{0%{transform:scale(.7);opacity:1}70%{transform:scale(1.25);opacity:.4}100%{transform:scale(.7);opacity:1}}
+.cp-look__tip{position:absolute;bottom:42px;left:50%;transform:translateX(-50%) translateY(6px);background:var(--cp-surface);color:var(--cp-text);border:1px solid var(--cp-border);border-radius:12px;box-shadow:var(--cp-shadow);padding:12px 16px;min-width:170px;max-width:230px;font-size:.82rem;opacity:0;pointer-events:none;transition:all .18s;text-align:center;z-index:5}
+.cp-look__dot:hover .cp-look__tip,.cp-look__dot:focus-within .cp-look__tip,.cp-look__dot.open .cp-look__tip{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.cp-look__tip strong{display:block;margin-bottom:2px;font-size:.88rem}
+.cp-look__price{display:block;color:var(--cp-primary);font-weight:800;margin:2px 0 6px}
+/* ---- Coupon ---- */
+.cp-coupon{border:2px dashed var(--cp-primary);border-radius:var(--cp-radius);background:var(--cp-surface);padding:24px;margin:26px 0;text-align:center;position:relative}
+.cp-coupon h3{margin:0 0 6px}
+.cp-coupon__row{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:12px}
+.cp-coupon__code{background:var(--cp-surface-2);border:2px dashed var(--cp-secondary);border-radius:12px;font-size:1.25rem;font-weight:800;letter-spacing:.1em;padding:10px 22px;cursor:pointer;color:var(--cp-text)}
+.cp-coupon__code small{font-size:.75rem;color:var(--cp-primary);letter-spacing:0}
+.cp-coupon__code:hover{border-color:var(--cp-primary)}
+.cp-coupon__expiry{margin-top:10px;font-size:.85rem;font-weight:700;color:var(--cp-secondary)}
+.cp-coupon__expiry.is-expired{color:#c0392b}
+/* ---- Gift grid ---- */
+.cp-gift__filters{margin-bottom:18px}
+.cp-gift__filters .cp-chip{cursor:pointer}
+.cp-gift__filters .cp-chip.is-active{background:var(--cp-primary);border-color:var(--cp-primary);color:#fff}
+/* ---- A-Z index ---- */
+.cp-az__controls{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+.cp-az__controls input[type=search]{flex:2;min-width:200px;border:1px solid var(--cp-border);border-radius:999px;padding:12px 20px;font-size:1rem;background:var(--cp-surface);color:var(--cp-text)}
+.cp-az__controls select{flex:1;min-width:160px;border:1px solid var(--cp-border);border-radius:999px;padding:12px 16px;background:var(--cp-surface);color:var(--cp-text)}
+.cp-az__letters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.cp-az__letters a{width:38px;height:38px;border:1px solid var(--cp-border);background:var(--cp-surface);border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:var(--cp-text)!important;text-decoration:none!important}
+.cp-az__letters a:hover{background:var(--cp-primary);border-color:var(--cp-primary);color:#fff!important}
+.cp-az__group{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:var(--cp-radius);padding:20px 24px;margin-bottom:18px}
+.cp-az__group h2{font-size:1.6rem;margin:0 0 10px;color:var(--cp-primary)}
+.cp-az__group ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 22px}
+.cp-az__group li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--cp-border);font-size:.92rem}
+.cp-az__group small{color:var(--cp-muted);white-space:nowrap}
+/* ---- Pin-it ---- */
+.cp-pin-wrap{position:relative;display:inline-block;max-width:100%}
+.cp-pin-wrap img{display:block}
+.cp-pin-btn{position:absolute!important;top:10px;left:10px;background:#e60023!important;color:#fff!important;font-size:.75rem!important;font-weight:800;padding:7px 14px!important;border-radius:999px;opacity:0;transition:opacity .18s;text-decoration:none!important;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.cp-pin-wrap:hover .cp-pin-btn{opacity:1}
+@media(hover:none){.cp-pin-btn{opacity:1;padding:6px 12px!important}}
+/* ---- Recipe tools (copy + servings) ---- */
+.cp-recipe__tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 12px}
+.cp-serv{display:inline-flex;align-items:center;gap:8px;background:var(--cp-surface-2);border:1px solid var(--cp-border);border-radius:999px;padding:4px 6px;font-size:.82rem;font-weight:700}
+.cp-serv button{width:30px;height:30px;border-radius:50%;border:1px solid var(--cp-border);background:var(--cp-surface);cursor:pointer;font-size:1rem;line-height:1;color:var(--cp-text)}
+.cp-serv button:hover{border-color:var(--cp-primary);color:var(--cp-primary)}
+/* ---- Saved page ---- */
+.cp-saved{margin:10px 0 30px}
+/* ---- Display dock (dark mode + font size) ---- */
+.cp-dock{position:fixed;right:16px;bottom:84px;z-index:498;display:flex;flex-direction:column;gap:8px}
+.cp-dock button{width:42px;height:42px;border-radius:50%;background:var(--cp-surface);border:1px solid var(--cp-border);box-shadow:var(--cp-shadow);cursor:pointer;font-size:.85rem;font-weight:800;color:var(--cp-text)}
+.cp-dock button:hover{border-color:var(--cp-primary);transform:scale(1.06)}
+/* ---- Dark mode ---- */
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"] body,html[data-theme="dark"]{--cp-bg:#141417;--cp-surface:#1d1d22;--cp-surface-2:#26262d;--cp-text:#ededed;--cp-muted:#a9a9b3;--cp-border:#34343c;--cp-header-bg:#191920;--cp-footer-bg:#0e0e11}
+html[data-theme="dark"] img{filter:brightness(.93)}
+html[data-theme="dark"] .cp-newsletter{background:linear-gradient(135deg,#23232b,#3a2b3f)}
+html[data-theme="dark"] .cp-hero--bold{filter:saturate(.85)}
+html[data-theme="dark"] .cp-disclosure{background:#2a2410;border-color:#8a6d00;color:#e8c95c}
+html[data-theme="dark"] .cp-reviewer{background:#12240f;border-color:#2c5a34;color:#b9e2b9}
+html[data-theme="dark"] .cp-proscons .cp-pros{background:#12240f}
+html[data-theme="dark"] .cp-proscons .cp-cons{background:#2b1414}
+/* ---- 1.3.0 responsive ---- */
+@media(max-width:820px){
+  .cp-rank__item{grid-template-columns:52px 1fr}
+  .cp-rank__img{display:none}
+  .cp-az__group ul{grid-template-columns:1fr}
+  .cp-dock{right:12px;bottom:150px}
+}
+@media print{.cp-actionbar,.cp-dock,.cp-rate,.cp-pin-btn,.cp-look__dot,.cp-recipe__tools,.cp-next-div,.cp-next-label{display:none!important}}

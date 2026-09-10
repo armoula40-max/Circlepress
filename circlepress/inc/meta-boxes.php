@@ -96,6 +96,15 @@ function circlepress_meta_fields() {
 				'_cp_faq' => array( 'label' => __( 'Questions (one per line: Question | Answer)', 'circlepress' ), 'type' => 'textarea' ),
 			),
 		),
+		'eeat'    => array(
+			'title' => __( '✅ E-E-A-T: Reviewer & Sources (→ reviewedBy schema)', 'circlepress' ),
+			'fields' => array(
+				'_cp_reviewer_name' => array( 'label' => __( 'Reviewer name (e.g. Dr. Jane Smith)', 'circlepress' ), 'type' => 'text' ),
+				'_cp_reviewer_role' => array( 'label' => __( 'Reviewer role (e.g. Veterinarian)', 'circlepress' ), 'type' => 'text' ),
+				'_cp_reviewed_date' => array( 'label' => __( 'Reviewed date (YYYY-MM-DD)', 'circlepress' ), 'type' => 'text' ),
+				'_cp_sources'       => array( 'label' => __( 'Sources (one per line: Title | URL)', 'circlepress' ), 'type' => 'textarea' ),
+			),
+		),
 	);
 }
 

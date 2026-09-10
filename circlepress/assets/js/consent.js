@@ -11,6 +11,17 @@
 	var mode = (window.circlepressConsent && window.circlepressConsent.mode) || 'strict';
 	var expiryDays = (window.circlepressConsent && window.circlepressConsent.expiryDays) || 180;
 
+	/* Strict-mode backup: hide ad slots client-side too (covers cached pages). */
+	try {
+		var _mode = (window.circlepressConsent && window.circlepressConsent.mode) || 'strict';
+		var _cm = document.cookie.match(/(?:^|; )cp_consent=([^;]*)/);
+		var _ok = false;
+		if (_cm) { try { _ok = !!JSON.parse(decodeURIComponent(_cm[1])).marketing; } catch (_e) {} }
+		if (_mode === 'strict' && !_ok) {
+			document.querySelectorAll('.cp-ad').forEach(function (el) { el.style.display = 'none'; });
+		}
+	} catch (_e2) {}
+
 	function get() {
 		try {
 			var m = document.cookie.match(/(?:^|; )cp_consent=([^;]*)/);

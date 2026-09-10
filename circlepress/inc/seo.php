@@ -39,7 +39,9 @@ function circlepress_head_meta() {
 		}
 		echo '<link rel="canonical" href="' . esc_url( circlepress_canonical_url() ) . '">' . "\n";
 		if ( is_search() || is_404() || is_paged() || is_attachment() ) {
-			echo '<meta name="robots" content="noindex,follow">' . "\n";
+			echo '<meta name="robots" content="noindex,follow,max-image-preview:large">' . "\n";
+		} else {
+			echo '<meta name="robots" content="max-image-preview:large">' . "\n";
 		}
 	}
 

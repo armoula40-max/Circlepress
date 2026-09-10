@@ -3,7 +3,7 @@ Contributors: circlepress
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, magazine, food, recipes, crafts, diy, beauty, home-decor, gardening, pets, seo, adsense, affiliate, lightweight, responsive, translation-ready
@@ -17,10 +17,15 @@ CirclePress is built for niche bloggers who want speed + rankings + revenue:
 
 * 9 niche presets: Food & Recipes, Crochet, Pets, Nails, Furniture, Home Decor,
   DIY & Crafts, Beauty, Gardening — switch from Customizer → Site Niche.
-* 12 page templates: one homepage per niche + generic niche home + full width + landing.
+* 14 page templates: niche homepages + full width + landing + gift guide + A-Z index.
 * 4 homepage layouts (Magazine/Grid/List/Showcase) with per-page override.
 * 6 Gutenberg block patterns for building custom homepages.
 * Fully mobile-ready: touch submenus, scrollable tables, responsive videos.
+* Conversion kit: auto next-post, listicles + ItemList schema, shop-the-look,
+  coupon boxes, gift guides with filters.
+* Engagement kit: sticky action bar, visitor ratings, bookmarks, text-to-speech,
+  dark mode, font-size controls, Pinterest Pin-it.
+* E-E-A-T: reviewer box + sources + reviewedBy schema; IndexNow instant indexing.
 * Per-niche Schema.org JSON-LD: Recipe, HowTo, Product, Review, FAQPage,
   Article, BreadcrumbList, WebSite, Organization — no plugin needed.
 * Ad-ready: 6 slots (header, below-title, in-content auto, sidebar, footer,
@@ -57,10 +62,24 @@ Edit any post → "CirclePress: Niche Details" box → fill the group you need. 
 = How do I change the homepage layout? =
 Customizer → Homepage → Layout shape (global), or per page via Page Options → Homepage layout.
 
+= How do listicles/coupons/gift guides work? =
+Use the shortcodes: [top_list][rank_item], [coupon], [gift_grid][gift_item]. Full examples in docs/AR-GUIDE.md.
+
 = Is it GDPR compliant? =
 Yes — enable the cookie banner (Customizer → Privacy & Consent). Strict mode blocks ads and video embeds until consent, and Google Consent Mode v2 signals are sent automatically. Remember to publish a Privacy Policy page.
 
 == Changelog ==
+
+= 1.3.0 =
+* NEW: auto-load next post (infinite reading, ads included).
+* NEW: listicles [top_list][rank_item] with award badges + ItemList schema.
+* NEW: shop-the-look hotspots, coupon boxes (copy + countdown), gift guides.
+* NEW: sticky action bar (Jump/Video/Listen/Save/Print/Pin) + video box.
+* NEW: visitor star ratings merged into stars + schema.
+* NEW: bookmarks + [saved_posts] page, text-to-speech, dark mode, font size.
+* NEW: Pinterest Pin-it on images, E-E-A-T reviewer/sources, IndexNow.
+* NEW: A-Z index + gift guide page templates.
+* FIX: anchor offset under sticky header, strict-mode cache backup, LCP fetchpriority.
 
 = 1.2.0 =
 * NEW: 4 homepage layouts (Magazine/Grid/List/Showcase) — global + per-page.
