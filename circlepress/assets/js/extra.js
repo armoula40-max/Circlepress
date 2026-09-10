@@ -103,7 +103,7 @@
 		$all('[data-cp-save]').forEach(function (btn) {
 			var saved = bmHas(btn.getAttribute('data-id'));
 			btn.classList.toggle('is-saved', saved);
-			btn.innerHTML = saved ? '❤️ ' + t('saved', 'Saved') : '🤍 ' + t('save', 'Save');
+			var _lbl = btn.querySelector('span'); if (_lbl) { _lbl.textContent = saved ? t('saved', 'Saved') : t('save', 'Save'); }
 		});
 	}
 	paintSaveButtons();
@@ -147,7 +147,7 @@
 			try { speechSynthesis.cancel(); } catch (e) {}
 			speaking = false;
 			listenBtn.classList.remove('is-speaking');
-			listenBtn.innerHTML = '🔊 ' + t('listen', 'Listen');
+			var _ls = listenBtn.querySelector('span'); if (_ls) { _ls.textContent = t('listen', 'Listen'); }
 		}
 		listenBtn.addEventListener('click', function () {
 			if (speaking) { stopSpeak(); return; }
@@ -167,7 +167,7 @@
 				u.onend = stopSpeak;
 				speaking = true;
 				listenBtn.classList.add('is-speaking');
-				listenBtn.innerHTML = '⏹ ' + t('stop', 'Stop');
+				var _ls2 = listenBtn.querySelector('span'); if (_ls2) { _ls2.textContent = t('stop', 'Stop'); }
 				speechSynthesis.speak(u);
 			} catch (e) { stopSpeak(); }
 		});

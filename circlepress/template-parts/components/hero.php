@@ -17,7 +17,7 @@ $sub      = get_theme_mod( 'circlepress_hero_sub', '' ) ? get_theme_mod( 'circle
 if ( 'bold' === $style ) :
 	?>
 	<section class="cp-hero cp-hero--bold">
-		<span class="cp-kicker"><?php echo esc_html( $niche['icon'] . ' ' . $niche['label'] ); ?></span>
+		<span class="cp-kicker"><?php echo esc_html( $niche['label'] ); ?></span>
 		<h1><?php echo esc_html( $title ); ?></h1>
 		<p><?php echo esc_html( $sub ); ?></p>
 		<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" style="display:flex;gap:10px;max-width:520px;margin:0 auto">
@@ -25,7 +25,7 @@ if ( 'bold' === $style ) :
 			<button class="cp-btn cp-btn--light" type="submit"><?php esc_html_e( 'Search', 'circlepress' ); ?></button>
 		</form>
 		<div class="cp-hero__cta">
-			<a class="cp-btn cp-btn--light" href="#cp-latest"><?php esc_html_e( 'Browse latest', 'circlepress' ); ?> ↓</a>
+			<a class="cp-btn cp-btn--light" href="#cp-latest"><?php esc_html_e( 'Browse latest', 'circlepress' ); ?></a>
 		</div>
 	</section>
 	<?php
@@ -43,11 +43,11 @@ if ( 'split' === $style ) :
 	?>
 	<section class="cp-hero cp-hero--split">
 		<div class="cp-hero__text">
-			<span class="cp-kicker"><?php echo esc_html( $niche['icon'] . ' ' . $niche['label'] ); ?></span>
+			<span class="cp-kicker"><?php echo esc_html( $niche['label'] ); ?></span>
 			<h1><?php echo esc_html( $title ); ?></h1>
 			<p style="color:var(--cp-muted)"><?php echo esc_html( $sub ); ?></p>
 			<div class="cp-hero__cta">
-				<a class="cp-btn" href="#cp-latest"><?php esc_html_e( 'Start exploring', 'circlepress' ); ?> →</a>
+				<a class="cp-btn" href="#cp-latest"><?php esc_html_e( 'Start exploring', 'circlepress' ); ?></a>
 				<a class="cp-btn cp-btn--outline" href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>"><?php esc_html_e( 'All articles', 'circlepress' ); ?></a>
 			</div>
 		</div>
@@ -60,7 +60,7 @@ endif;
 if ( 'minimal' === $style ) :
 	?>
 	<section class="cp-hero cp-hero--minimal">
-		<span class="cp-kicker"><?php echo esc_html( $niche['icon'] . ' ' . $niche['label'] ); ?></span>
+		<span class="cp-kicker"><?php echo esc_html( $niche['label'] ); ?></span>
 		<h1><?php echo esc_html( $title ); ?></h1>
 		<p style="color:var(--cp-muted)"><?php echo esc_html( $sub ); ?></p>
 	</section>
@@ -80,6 +80,8 @@ while ( $q->have_posts() ) {
 }
 wp_reset_postdata();
 $main = array_shift( $posts );
+$main_cats = get_the_category( $main->ID );
+$main_cat  = $main_cats ? $main_cats[0]->name : __( 'Featured', 'circlepress' );
 ?>
 <section class="cp-hero cp-hero--magazine">
 	<article class="cp-hero__main">
@@ -87,9 +89,9 @@ $main = array_shift( $posts );
 			<?php echo get_the_post_thumbnail( $main, 'large' ); ?>
 		<?php endif; ?>
 		<div class="cp-hero__overlay">
-			<span class="cp-kicker"><?php esc_html_e( 'Featured', 'circlepress' ); ?></span>
+			<span class="cp-kicker cp-kicker--light"><?php echo esc_html( $main_cat ); ?></span>
 			<h2><a href="<?php echo esc_url( get_permalink( $main ) ); ?>"><?php echo esc_html( get_the_title( $main ) ); ?></a></h2>
-			<div class="cp-hero__meta"><span>📅 <?php echo esc_html( get_the_date( '', $main ) ); ?></span><span>⏱ <?php echo esc_html( circlepress_reading_time( $main->ID ) ); ?></span></div>
+			<div class="cp-hero__meta"><span><?php echo circlepress_icon( 'calendar', 13 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php echo esc_html( get_the_date( '', $main ) ); ?></span><span><?php echo circlepress_icon( 'clock', 13 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php echo esc_html( circlepress_reading_time( $main->ID ) ); ?></span></div>
 		</div>
 	</article>
 	<div class="cp-hero__side">
@@ -100,7 +102,7 @@ $main = array_shift( $posts );
 				<?php endif; ?>
 				<div class="cp-hero__overlay">
 					<h3><a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a></h3>
-					<div class="cp-hero__meta"><span>📅 <?php echo esc_html( get_the_date( '', $p ) ); ?></span></div>
+					<div class="cp-hero__meta"><span><?php echo esc_html( get_the_date( '', $p ) ); ?></span></div>
 				</div>
 			</article>
 		<?php endforeach; ?>

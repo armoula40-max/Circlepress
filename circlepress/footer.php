@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php if ( $social ) : ?>
 							<div class="cp-social">
 								<?php foreach ( $social as $s ) : ?>
-									<a href="<?php echo esc_url( $s[0] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $s[2] ); ?>" title="<?php echo esc_attr( $s[2] ); ?>"><?php echo esc_html( $s[1] ); ?></a>
+									<a href="<?php echo esc_url( $s[0] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $s[2] ); ?>" title="<?php echo esc_attr( $s[2] ); ?>"><?php echo circlepress_icon( $s[1], 16 ); ?></a>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>

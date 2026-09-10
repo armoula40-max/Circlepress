@@ -3,7 +3,7 @@ Contributors: circlepress
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, magazine, food, recipes, crafts, diy, beauty, home-decor, gardening, pets, seo, adsense, affiliate, lightweight, responsive, translation-ready
@@ -17,6 +17,8 @@ CirclePress is built for niche bloggers who want speed + rankings + revenue:
 
 * 9 niche presets: Food & Recipes, Crochet, Pets, Nails, Furniture, Home Decor,
   DIY & Crafts, Beauty, Gardening — switch from Customizer → Site Niche.
+* Pro food-blog design: SVG icons, slide-in mobile drawer, fullscreen search,
+  Pinterest Save buttons, WPRM-style recipe cards, editorial section headers.
 * 14 page templates: niche homepages + full width + landing + gift guide + A-Z index.
 * 4 homepage layouts (Magazine/Grid/List/Showcase) with per-page override.
 * 6 Gutenberg block patterns for building custom homepages.
@@ -69,6 +71,14 @@ Use the shortcodes: [top_list][rank_item], [coupon], [gift_grid][gift_item]. Ful
 Yes — enable the cookie banner (Customizer → Privacy & Consent). Strict mode blocks ads and video embeds until consent, and Google Consent Mode v2 signals are sent automatically. Remember to publish a Privacy Policy page.
 
 == Changelog ==
+
+= 2.0.0 =
+* PRO REDESIGN: SVG icon system replaces all UI emoji.
+* NEW: slide-in mobile drawer menu with search + social + accordions.
+* NEW: fullscreen search overlay.
+* NEW: Pinterest Save buttons on cards, WPRM-style recipe card, editorial headers.
+* NEW: mobile-first pass — scrollable action bar, stacked recipe/rank layouts.
+* FIX: demo page responsive issues on small phones.
 
 = 1.3.0 =
 * NEW: auto-load next post (infinite reading, ads included).

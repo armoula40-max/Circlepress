@@ -13,7 +13,7 @@ $text   = get_theme_mod( 'circlepress_newsletter_text', '' ) ? get_theme_mod( 'c
 $action = get_theme_mod( 'circlepress_newsletter_action', '' );
 ?>
 <section class="cp-newsletter cp-section">
-	<h2>💌 <?php echo esc_html( $title ); ?></h2>
+	<h2><?php echo esc_html( $title ); ?></h2>
 	<p><?php echo esc_html( $text ); ?></p>
 	<?php if ( $action ) : ?>
 		<form method="post" action="<?php echo esc_url( $action ); ?>" target="_blank">

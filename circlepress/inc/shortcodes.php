@@ -27,36 +27,67 @@ function circlepress_sc_recipe( $atts ) {
 	$total    = get_post_meta( $post_id, '_cp_recipe_total', true );
 	$servings = get_post_meta( $post_id, '_cp_recipe_servings', true );
 	$calories = get_post_meta( $post_id, '_cp_recipe_calories', true );
+	$course   = get_post_meta( $post_id, '_cp_recipe_course', true );
+	$cuisine  = get_post_meta( $post_id, '_cp_recipe_cuisine', true );
 	$notes    = get_post_meta( $post_id, '_cp_recipe_notes', true );
 	$rating   = get_post_meta( $post_id, '_cp_rating', true );
+	$desc     = has_excerpt( $post_id ) ? get_the_excerpt( $post_id ) : '';
+	$img      = has_post_thumbnail( $post_id ) ? get_the_post_thumbnail_url( $post_id, 'medium' ) : '';
+	$pin      = 'https://pinterest.com/pin/create/button/?url=' . rawurlencode( get_permalink( $post_id ) ) . '&description=' . rawurlencode( $name );
+	if ( $img ) {
+		$pin .= '&media=' . rawurlencode( get_the_post_thumbnail_url( $post_id, 'large' ) );
+	}
 
 	ob_start();
 	?>
 	<div class="cp-box cp-recipe" id="cp-recipe">
-		<h2 class="cp-box__title">🍲 <?php echo esc_html( $name ); ?></h2>
-		<?php if ( $rating ) : ?>
-			<div class="cp-rating"><?php echo circlepress_stars( $rating ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <strong><?php echo esc_html( $rating ); ?>/5</strong>
-				<button class="cp-btn cp-btn--sm cp-btn--outline cp-print-btn" onclick="window.print();return false;">🖨 <?php esc_html_e( 'Print', 'circlepress' ); ?></button>
+		<div class="cp-recipe__head">
+			<?php if ( $img ) : ?><img class="cp-recipe__img" src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy"><?php endif; ?>
+			<div class="cp-recipe__intro">
+				<span class="cp-section__kicker"><?php esc_html_e( 'Recipe', 'circlepress' ); ?></span>
+				<h2 class="cp-box__title"><?php echo esc_html( $name ); ?></h2>
+				<?php if ( $rating ) : ?>
+					<div class="cp-rating"><?php echo circlepress_stars( $rating ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <strong><?php echo esc_html( $rating ); ?>/5</strong></div>
+				<?php endif; ?>
+				<?php if ( $desc ) : ?><p class="cp-recipe__desc"><?php echo esc_html( $desc ); ?></p><?php endif; ?>
+				<div class="cp-recipe__actions">
+					<?php if ( get_theme_mod( 'circlepress_bookmarks', true ) ) : ?>
+						<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" data-cp-save data-id="<?php echo esc_attr( $post_id ); ?>" data-title="<?php echo esc_attr( $name ); ?>" data-url="<?php echo esc_url( get_permalink( $post_id ) ); ?>" data-img="<?php echo esc_url( $img ); ?>"><?php echo circlepress_icon( 'bookmark', 14 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <span><?php esc_html_e( 'Save', 'circlepress' ); ?></span></button>
+					<?php endif; ?>
+					<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" onclick="window.print();return false;"><?php echo circlepress_icon( 'print', 14 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <span><?php esc_html_e( 'Print', 'circlepress' ); ?></span></button>
+					<a class="cp-btn cp-btn--sm cp-btn--outline" href="<?php echo esc_url( $pin ); ?>" target="_blank" rel="noopener"><?php echo circlepress_icon( 'pinterest', 14 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <span>Pin</span></a>
+				</div>
 			</div>
-		<?php endif; ?>
-		<div class="cp-recipe__meta">
-			<?php if ( $prep ) : ?><div><?php esc_html_e( 'Prep', 'circlepress' ); ?><b><?php echo esc_html( $prep ); ?></b></div><?php endif; ?>
-			<?php if ( $cook ) : ?><div><?php esc_html_e( 'Cook', 'circlepress' ); ?><b><?php echo esc_html( $cook ); ?></b></div><?php endif; ?>
-			<?php if ( $total ) : ?><div><?php esc_html_e( 'Total', 'circlepress' ); ?><b><?php echo esc_html( $total ); ?></b></div><?php endif; ?>
-			<?php if ( $servings ) : ?><div><?php esc_html_e( 'Servings', 'circlepress' ); ?><b><?php echo esc_html( $servings ); ?></b></div><?php endif; ?>
-			<?php if ( $calories ) : ?><div><?php esc_html_e( 'Calories', 'circlepress' ); ?><b><?php echo esc_html( $calories ); ?></b></div><?php endif; ?>
 		</div>
-		<h3><?php esc_html_e( 'Ingredients', 'circlepress' ); ?></h3>
-		<ul class="cp-check">
-			<?php foreach ( $ingredients as $ing ) : ?><li><?php echo esc_html( $ing ); ?></li><?php endforeach; ?>
-		</ul>
-		<?php if ( $instructions ) : ?>
-			<h3><?php esc_html_e( 'Instructions', 'circlepress' ); ?></h3>
-			<ol class="cp-steps">
-				<?php foreach ( $instructions as $step ) : ?><li><?php echo esc_html( $step ); ?></li><?php endforeach; ?>
-			</ol>
+		<div class="cp-recipe__meta">
+			<?php if ( $prep ) : ?><div><span><?php echo circlepress_icon( 'clock', 15 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php esc_html_e( 'Prep Time', 'circlepress' ); ?></span><b><?php echo esc_html( $prep ); ?></b></div><?php endif; ?>
+			<?php if ( $cook ) : ?><div><span><?php echo circlepress_icon( 'clock', 15 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php esc_html_e( 'Cook Time', 'circlepress' ); ?></span><b><?php echo esc_html( $cook ); ?></b></div><?php endif; ?>
+			<?php if ( $total ) : ?><div><span><?php echo circlepress_icon( 'clock', 15 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php esc_html_e( 'Total Time', 'circlepress' ); ?></span><b><?php echo esc_html( $total ); ?></b></div><?php endif; ?>
+			<?php if ( $servings ) : ?><div><span><?php echo circlepress_icon( 'user', 15 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <?php esc_html_e( 'Servings', 'circlepress' ); ?></span><b><?php echo esc_html( $servings ); ?></b></div><?php endif; ?>
+			<?php if ( $calories ) : ?><div><span><?php esc_html_e( 'Calories', 'circlepress' ); ?></span><b><?php echo esc_html( $calories ); ?> kcal</b></div><?php endif; ?>
+			<?php if ( $course ) : ?><div><span><?php esc_html_e( 'Course', 'circlepress' ); ?></span><b><?php echo esc_html( $course ); ?></b></div><?php endif; ?>
+			<?php if ( $cuisine ) : ?><div><span><?php esc_html_e( 'Cuisine', 'circlepress' ); ?></span><b><?php echo esc_html( $cuisine ); ?></b></div><?php endif; ?>
+		</div>
+		<div class="cp-recipe__cols">
+			<div class="cp-recipe__ings">
+				<h3><?php esc_html_e( 'Ingredients', 'circlepress' ); ?></h3>
+				<ul class="cp-check">
+					<?php foreach ( $ingredients as $ing ) : ?><li><?php echo esc_html( $ing ); ?></li><?php endforeach; ?>
+				</ul>
+			</div>
+			<?php if ( $instructions ) : ?>
+			<div class="cp-recipe__steps">
+				<h3><?php esc_html_e( 'Instructions', 'circlepress' ); ?></h3>
+				<ol class="cp-steps">
+					<?php foreach ( $instructions as $step ) : ?><li><?php echo esc_html( $step ); ?></li><?php endforeach; ?>
+				</ol>
+			</div>
+			<?php endif; ?>
+		</div>
+		<?php if ( $notes ) : ?>
+			<div class="cp-recipe__notes"><strong><?php esc_html_e( 'Notes', 'circlepress' ); ?></strong><p><?php echo esc_html( $notes ); ?></p></div>
 		<?php endif; ?>
-		<?php if ( $notes ) : ?><p><strong><?php esc_html_e( 'Notes:', 'circlepress' ); ?></strong> <?php echo esc_html( $notes ); ?></p><?php endif; ?>
+		<p class="cp-recipe__tried"><?php esc_html_e( 'Tried this recipe? Rate it below and let us know how it turned out!', 'circlepress' ); ?></p>
 	</div>
 	<?php
 	return ob_get_clean();

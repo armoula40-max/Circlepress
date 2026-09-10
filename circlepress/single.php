@@ -37,9 +37,9 @@ get_header();
 					<?php if ( $subtitle ) : ?><p class="cp-single__subtitle"><?php echo esc_html( $subtitle ); ?></p><?php endif; ?>
 					<div class="cp-single__meta">
 						<span><?php echo get_avatar( get_the_author_meta( 'ID' ), 28 ); ?> <?php the_author_posts_link(); ?></span>
-						<span>📅 <?php echo esc_html( get_the_date() ); ?></span>
+						<span><?php echo circlepress_icon( 'calendar', 14 ); ?> <?php echo esc_html( get_the_date() ); ?></span>
 						<?php if ( get_theme_mod( 'circlepress_show_reading_time', true ) ) : ?>
-							<span>⏱ <?php echo esc_html( circlepress_reading_time() ); ?></span>
+							<span><?php echo circlepress_icon( 'clock', 14 ); ?> <?php echo esc_html( circlepress_reading_time() ); ?></span>
 						<?php endif; ?>
 						<?php if ( $rating ) : ?>
 							<span><?php echo circlepress_stars( $rating ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> <strong><?php echo esc_html( $rating ); ?>/5</strong></span>

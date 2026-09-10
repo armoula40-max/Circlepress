@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Post meta line (date, reading time, comments).
+ * Post meta line (date, reading time, comments) with SVG icons.
  */
 function circlepress_posted_on() {
 	$time = sprintf(
@@ -18,11 +18,25 @@ function circlepress_posted_on() {
 		esc_attr( get_the_date( DATE_W3C ) ),
 		esc_html( get_the_date() )
 	);
-	echo '<span class="cp-card__date">' . $time . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo '<span class="cp-card__date">' . circlepress_icon( 'calendar', 13 ) . ' ' . $time . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	if ( get_theme_mod( 'circlepress_show_reading_time', true ) ) {
-		echo '<span class="cp-card__read">' . esc_html( circlepress_reading_time() ) . '</span>';
+		echo '<span class="cp-card__read">' . circlepress_icon( 'clock', 13 ) . ' ' . esc_html( circlepress_reading_time() ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
-	echo '<span class="cp-card__comments">' . esc_html( sprintf( _n( '%s comment', '%s comments', get_comments_number(), 'circlepress' ), number_format_i18n( get_comments_number() ) ) ) . '</span>';
+	echo '<span class="cp-card__comments">' . circlepress_icon( 'comment', 13 ) . ' ' . esc_html( sprintf( _n( '%s comment', '%s comments', get_comments_number(), 'circlepress' ), number_format_i18n( get_comments_number() ) ) ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
+ * Star rating row for cards (only when the post has a rating).
+ *
+ * @param int|null $post_id Post id.
+ */
+function circlepress_card_rating( $post_id = null ) {
+	$post_id = $post_id ? $post_id : get_the_ID();
+	$rating  = get_post_meta( $post_id, '_cp_rating', true );
+	if ( '' === $rating ) {
+		return;
+	}
+	echo '<div class="cp-card__stars">' . circlepress_stars( $rating ) . ' <span>' . esc_html( $rating ) . '</span></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -61,7 +75,7 @@ function circlepress_pagination() {
 }
 
 /**
- * Social share buttons.
+ * Social share buttons (SVG icons).
  */
 function circlepress_share_buttons() {
 	if ( ! get_theme_mod( 'circlepress_show_share', true ) || ! is_singular() ) {
@@ -70,23 +84,24 @@ function circlepress_share_buttons() {
 	$url   = rawurlencode( get_permalink() );
 	$title = rawurlencode( get_the_title() );
 	$links = array(
-		'x'    => array( 'https://twitter.com/intent/tweet?url=' . $url . '&text=' . $title, '𝕏', 'X' ),
-		'fb'   => array( 'https://www.facebook.com/sharer/sharer.php?u=' . $url, 'f', 'Facebook' ),
-		'pin'  => array( 'https://pinterest.com/pin/create/button/?url=' . $url . '&description=' . $title, 'P', 'Pinterest' ),
-		'wa'   => array( 'https://wa.me/?text=' . $title . '%20' . $url, '✆', 'WhatsApp' ),
-		'tg'   => array( 'https://t.me/share/url?url=' . $url . '&text=' . $title, '✈', 'Telegram' ),
+		'pin'  => array( 'https://pinterest.com/pin/create/button/?url=' . $url . '&description=' . $title, 'pinterest', 'Pinterest' ),
+		'fb'   => array( 'https://www.facebook.com/sharer/sharer.php?u=' . $url, 'facebook', 'Facebook' ),
+		'x'    => array( 'https://twitter.com/intent/tweet?url=' . $url . '&text=' . $title, 'x', 'X' ),
+		'mail' => array( 'mailto:?subject=' . $title . '&body=' . $url, 'mail', __( 'Email', 'circlepress' ) ),
 	);
-	echo '<div class="cp-share"><strong>' . esc_html__( 'Share:', 'circlepress' ) . '</strong> ';
+	echo '<div class="cp-share"><strong>' . esc_html__( 'Share this:', 'circlepress' ) . '</strong> ';
 	foreach ( $links as $key => $l ) {
+		$target = 'mail' === $key ? '' : ' target="_blank" rel="noopener"';
 		printf(
-			'<a class="cp-share--%1$s" href="%2$s" target="_blank" rel="noopener" aria-label="%3$s" title="%3$s">%4$s</a>',
+			'<a class="cp-share--%1$s" href="%2$s"%3$s aria-label="%4$s" title="%4$s">%5$s</a>',
 			esc_attr( $key ),
 			esc_url( $l[0] ),
+			$target, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			esc_attr( $l[2] ),
-			esc_html( $l[1] )
+			circlepress_icon( $l[1], 16 ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
 	}
-	echo '<a class="cp-share--link cp-copy-link" href="' . esc_url( get_permalink() ) . '" aria-label="' . esc_attr__( 'Copy link', 'circlepress' ) . '" title="' . esc_attr__( 'Copy link', 'circlepress' ) . '">⧉</a></div>';
+	echo '<a class="cp-share--link cp-copy-link" href="' . esc_url( get_permalink() ) . '" aria-label="' . esc_attr__( 'Copy link', 'circlepress' ) . '" title="' . esc_attr__( 'Copy link', 'circlepress' ) . '">' . circlepress_icon( 'link', 16 ) . '</a></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -102,8 +117,8 @@ function circlepress_author_box() {
 		return;
 	}
 	echo '<div class="cp-author">';
-	echo get_avatar( $author_id, 80 );
-	echo '<div><strong>' . esc_html( get_the_author() ) . '</strong><p>' . esc_html( $desc ) . '</p></div>';
+	echo get_avatar( $author_id, 96 );
+	echo '<div><span class="cp-author__label">' . esc_html__( 'About the author', 'circlepress' ) . '</span><strong>' . esc_html( get_the_author() ) . '</strong><p>' . esc_html( $desc ) . '</p></div>';
 	echo '</div>';
 }
 
@@ -232,18 +247,18 @@ function circlepress_affiliate_rel() {
 }
 
 /**
- * Social links footer array.
+ * Social links: url + SVG icon name + label.
  *
  * @return array
  */
 function circlepress_social_links() {
 	$nets = array(
-		'facebook'  => array( 'f', 'Facebook' ),
-		'instagram' => array( '◉', 'Instagram' ),
-		'pinterest' => array( 'P', 'Pinterest' ),
-		'youtube'   => array( '▶', 'YouTube' ),
-		'tiktok'    => array( '♪', 'TikTok' ),
-		'x'         => array( '𝕏', 'X' ),
+		'facebook'  => array( 'facebook', 'Facebook' ),
+		'instagram' => array( 'instagram', 'Instagram' ),
+		'pinterest' => array( 'pinterest', 'Pinterest' ),
+		'youtube'   => array( 'youtube', 'YouTube' ),
+		'tiktok'    => array( 'tiktok', 'TikTok' ),
+		'x'         => array( 'x', 'X' ),
 	);
 	$out  = array();
 	foreach ( $nets as $key => $meta ) {

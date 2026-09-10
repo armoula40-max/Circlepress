@@ -58,7 +58,7 @@ foreach ( $sections as $section ) {
 			if ( ! $cats ) {
 				break;
 			}
-			echo '<section class="cp-section"><div class="cp-section__head"><h2>' . esc_html__( 'Explore topics', 'circlepress' ) . '</h2></div><div class="cp-chips">';
+			echo '<section class="cp-section"><div class="cp-section__head"><div><span class="cp-section__kicker">' . esc_html( $niche['label'] ) . '</span><h2>' . esc_html__( 'Explore topics', 'circlepress' ) . '</h2></div></div><div class="cp-chips">';
 			foreach ( $cats as $cat ) {
 				echo '<a class="cp-chip" href="' . esc_url( get_category_link( $cat ) ) . '">' . esc_html( $cat->name ) . ' <span>(' . esc_html( $cat->count ) . ')</span></a>';
 			}
@@ -73,7 +73,7 @@ foreach ( $sections as $section ) {
 			if ( ! $q->have_posts() ) {
 				break;
 			}
-			echo '<section class="cp-section"><div class="cp-section__head"><h2>' . esc_html( $niche['icon'] . ' ' . __( 'Featured', 'circlepress' ) ) . '</h2><a class="cp-more" href="' . esc_url( get_permalink( get_option( 'page_for_posts' ) ) ) . '">' . esc_html__( 'View all →', 'circlepress' ) . '</a></div><div class="cp-grid cp-grid--3">';
+			echo '<section class="cp-section"><div class="cp-section__head"><div><span class="cp-section__kicker">' . esc_html__( 'Handpicked', 'circlepress' ) . '</span><h2>' . esc_html__( 'Featured', 'circlepress' ) . '</h2></div><a class="cp-more" href="' . esc_url( get_permalink( get_option( 'page_for_posts' ) ) ) . '">' . esc_html__( 'View all', 'circlepress' ) . '</a></div><div class="cp-grid cp-grid--3">';
 			while ( $q->have_posts() ) {
 				$q->the_post();
 				get_template_part( 'template-parts/components/post-card' );
@@ -97,7 +97,7 @@ foreach ( $sections as $section ) {
 			if ( ! $tq->have_posts() ) {
 				break;
 			}
-			echo '<section class="cp-section"><div class="cp-section__head"><h2>🔥 ' . esc_html__( 'Trending now', 'circlepress' ) . '</h2></div><div class="cp-grid cp-grid--4">';
+			echo '<section class="cp-section"><div class="cp-section__head"><div><span class="cp-section__kicker">' . esc_html__( 'Most loved', 'circlepress' ) . '</span><h2>' . esc_html__( 'Trending now', 'circlepress' ) . '</h2></div></div><div class="cp-grid cp-grid--4">';
 			while ( $tq->have_posts() ) {
 				$tq->the_post();
 				get_template_part( 'template-parts/components/post-card' );
@@ -120,7 +120,7 @@ foreach ( $sections as $section ) {
 			if ( ! $lq->have_posts() ) {
 				break;
 			}
-			echo '<section class="cp-section" id="cp-latest"><div class="cp-section__head"><h2>📰 ' . esc_html__( 'Latest articles', 'circlepress' ) . '</h2><a class="cp-more" href="' . esc_url( get_permalink( get_option( 'page_for_posts' ) ) ) . '">' . esc_html__( 'View all →', 'circlepress' ) . '</a></div><div class="cp-grid cp-grid--3">';
+			echo '<section class="cp-section" id="cp-latest"><div class="cp-section__head"><div><span class="cp-section__kicker">' . esc_html__( 'Fresh from the blog', 'circlepress' ) . '</span><h2>' . esc_html__( 'Latest articles', 'circlepress' ) . '</h2></div><a class="cp-more" href="' . esc_url( get_permalink( get_option( 'page_for_posts' ) ) ) . '">' . esc_html__( 'View all', 'circlepress' ) . '</a></div><div class="cp-grid cp-grid--3">';
 			while ( $lq->have_posts() ) {
 				$lq->the_post();
 				get_template_part( 'template-parts/components/post-card' );
@@ -143,7 +143,7 @@ foreach ( $sections as $section ) {
 			if ( ! $items ) {
 				break;
 			}
-			echo '<section class="cp-section"><div class="cp-section__head"><h2>❓ ' . esc_html__( 'Common questions', 'circlepress' ) . '</h2></div><div class="cp-faq">';
+			echo '<section class="cp-section"><div class="cp-section__head"><div><span class="cp-section__kicker">' . esc_html__( 'Good to know', 'circlepress' ) . '</span><h2>' . esc_html__( 'Common questions', 'circlepress' ) . '</h2></div></div><div class="cp-faq">';
 			foreach ( $items as $f ) {
 				echo '<details><summary>' . esc_html( $f['q'] ) . '</summary><div>' . esc_html( $f['a'] ) . '</div></details>';
 			}
@@ -175,7 +175,7 @@ foreach ( $sections as $section ) {
 			if ( ! $sq->have_posts() ) {
 				break;
 			}
-			echo '<section class="cp-section"><div class="cp-section__head"><h2>' . esc_html( $niche['icon'] . ' ' . $special_titles[ $section ] ) . '</h2></div><div class="cp-grid cp-grid--3">';
+			echo '<section class="cp-section"><div class="cp-section__head"><div><span class="cp-section__kicker">' . esc_html( $niche['label'] ) . '</span><h2>' . esc_html( $special_titles[ $section ] ) . '</h2></div></div><div class="cp-grid cp-grid--3">';
 			while ( $sq->have_posts() ) {
 				$sq->the_post();
 				get_template_part( 'template-parts/components/post-card' );

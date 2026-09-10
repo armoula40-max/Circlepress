@@ -120,23 +120,23 @@ function circlepress_action_bar() {
 	}
 	echo '<div class="cp-actionbar" role="toolbar" aria-label="' . esc_attr__( 'Post actions', 'circlepress' ) . '">';
 	if ( $has_recipe ) {
-		echo '<a class="cp-btn cp-btn--sm" href="#cp-recipe">⬇ ' . esc_html__( 'Jump to Recipe', 'circlepress' ) . '</a>';
+		echo '<a class="cp-btn cp-btn--sm" href="#cp-recipe">' . circlepress_icon( 'down', 14 ) . ' <span>' . esc_html__( 'Jump to Recipe', 'circlepress' ) . '</span></a>';
 	}
 	if ( $has_howto ) {
-		echo '<a class="cp-btn cp-btn--sm cp-btn--secondary" href="#cp-howto">⬇ ' . esc_html__( 'Jump to How-To', 'circlepress' ) . '</a>';
+		echo '<a class="cp-btn cp-btn--sm cp-btn--secondary" href="#cp-howto">' . circlepress_icon( 'down', 14 ) . ' <span>' . esc_html__( 'Jump to How-To', 'circlepress' ) . '</span></a>';
 	}
 	if ( $video ) {
-		echo '<a class="cp-btn cp-btn--sm cp-btn--outline" href="#cp-video">▶ ' . esc_html__( 'Video', 'circlepress' ) . '</a>';
+		echo '<a class="cp-btn cp-btn--sm cp-btn--outline" href="#cp-video">' . circlepress_icon( 'play', 13 ) . ' <span>' . esc_html__( 'Video', 'circlepress' ) . '</span></a>';
 	}
 	if ( get_theme_mod( 'circlepress_tts', true ) ) {
-		echo '<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" data-cp-listen>🔊 ' . esc_html__( 'Listen', 'circlepress' ) . '</button>';
+		echo '<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" data-cp-listen>' . circlepress_icon( 'volume', 14 ) . ' <span>' . esc_html__( 'Listen', 'circlepress' ) . '</span></button>';
 	}
 	if ( get_theme_mod( 'circlepress_bookmarks', true ) ) {
 		$img = has_post_thumbnail( $id ) ? get_the_post_thumbnail_url( $id, 'medium' ) : '';
-		echo '<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" data-cp-save data-id="' . esc_attr( $id ) . '" data-title="' . esc_attr( get_the_title() ) . '" data-url="' . esc_url( get_permalink() ) . '" data-img="' . esc_url( $img ) . '">🤍 ' . esc_html__( 'Save', 'circlepress' ) . '</button>';
+		echo '<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" data-cp-save data-id="' . esc_attr( $id ) . '" data-title="' . esc_attr( get_the_title() ) . '" data-url="' . esc_url( get_permalink() ) . '" data-img="' . esc_url( $img ) . '">' . circlepress_icon( 'bookmark', 14 ) . ' <span>' . esc_html__( 'Save', 'circlepress' ) . '</span></button>';
 	}
-	echo '<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" onclick="window.print();return false;">🖨 ' . esc_html__( 'Print', 'circlepress' ) . '</button>';
-	echo '<a class="cp-btn cp-btn--sm cp-btn--outline" href="' . esc_url( $pin ) . '" target="_blank" rel="noopener">📌 Pin</a>';
+	echo '<button type="button" class="cp-btn cp-btn--sm cp-btn--outline" onclick="window.print();return false;">' . circlepress_icon( 'print', 14 ) . ' <span>' . esc_html__( 'Print', 'circlepress' ) . '</span></button>';
+	echo '<a class="cp-btn cp-btn--sm cp-btn--outline" href="' . esc_url( $pin ) . '" target="_blank" rel="noopener">' . circlepress_icon( 'pinterest', 14 ) . ' <span>Pin</span></a>';
 	echo '</div>';
 }
 
