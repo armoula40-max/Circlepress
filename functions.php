@@ -4,7 +4,7 @@
  * @package CirclePress
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-define( 'CIRCLEPRESS_VERSION', '2.2.0' );
+define( 'CIRCLEPRESS_VERSION', '2.3.0' );
 define( 'CIRCLEPRESS_DIR', get_template_directory() );
 define( 'CIRCLEPRESS_URI', get_template_directory_uri() );
 

@@ -159,7 +159,8 @@ add_action( 'widgets_init', 'circlepress_widgets_init' );
 
 /* ---------- Assets (kept tiny on purpose) ---------- */
 function circlepress_assets() {
-	$ver = CIRCLEPRESS_VERSION;
+	$style_file = CIRCLEPRESS_DIR . '/style.css';
+	$ver = file_exists( $style_file ) ? (string) filemtime( $style_file ) : CIRCLEPRESS_VERSION;
 
 	/* Main stylesheet with per-niche CSS variables. */
 	wp_enqueue_style( 'circlepress-style', get_stylesheet_uri(), array(), $ver );
