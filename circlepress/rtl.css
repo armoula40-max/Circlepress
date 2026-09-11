@@ -1,0 +1,10 @@
+/*
+Theme Name: CirclePress
+Description: RTL support — most layout uses logical properties already; these are refinements.
+*/
+body{direction:rtl;text-align:right}
+.cp-entry blockquote,.wp-block-quote{border-left:0;border-right:4px solid var(--cp-primary);border-radius:12px 0 0 12px}
+.cp-pagination .prev::before{content:"→"}
+.cp-toc ol{padding-left:0}
+.cp-steps>li{padding-left:0}
+.cp-footer__bottom .cp-container{flex-direction:row-reverse}
