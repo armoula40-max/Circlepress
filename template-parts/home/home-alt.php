@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $layout   = circlepress_home_layout();
-if ( in_array( $layout, array( 'slider', 'bento', 'masonry', 'minimal', 'portal', 'editorial' ), true ) ) {
+    if ( in_array( $layout, array( 'slider', 'bento', 'masonry', 'minimal', 'portal', 'editorial', 'calm' ), true ) ) {
 	get_template_part( 'template-parts/home/home-shapes' );
 	return;
 }

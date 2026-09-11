@@ -17,6 +17,26 @@ $title    = get_theme_mod( 'circlepress_hero_title', '' ) ? get_theme_mod( 'circ
 $sub      = get_theme_mod( 'circlepress_hero_sub', '' ) ? get_theme_mod( 'circlepress_hero_sub', '' ) : $niche['hero_sub'];
 $blog_url = get_permalink( get_option( 'page_for_posts' ) );
 
+/* ============ CALM: soft editorial recipe journal ============ */
+if ( 'calm' === $layout ) :
+	$calm_q = circlepress_featured_query( 3 );
+	if ( ! $calm_q->have_posts() ) {
+		$calm_q = new WP_Query( array( 'posts_per_page' => 3, 'ignore_sticky_posts' => true, 'no_found_rows' => true ) );
+	}
+	$calm_posts = array();
+	while ( $calm_q->have_posts() ) { $calm_q->the_post(); $calm_posts[] = get_post(); }
+	wp_reset_postdata();
+	?>
+	<section class="cp-calm-hero">
+		<div class="cp-calm-hero__copy"><span class="cp-calm-kicker"><?php echo esc_html( $niche['label'] ); ?> · <?php esc_html_e( 'Kitchen notes', 'circlepress' ); ?></span><h1><?php echo esc_html( $title ); ?></h1><p><?php echo esc_html( $sub ); ?></p><a class="cp-calm-link" href="#cp-latest"><?php esc_html_e( 'Explore the latest', 'circlepress' ); ?> ↓</a></div>
+		<div class="cp-calm-hero__shape" aria-hidden="true"></div>
+	</section>
+	<?php if ( $calm_posts ) : ?><section class="cp-calm-featured"><div class="cp-calm-section-head"><div><span><?php esc_html_e( 'Fresh from the kitchen', 'circlepress' ); ?></span><h2><?php esc_html_e( 'Latest recipes & ideas', 'circlepress' ); ?></h2></div><a href="<?php echo esc_url( $blog_url ); ?>"><?php esc_html_e( 'Browse all recipes', 'circlepress' ); ?> →</a></div><div class="cp-calm-featured__grid">
+		<?php foreach ( $calm_posts as $index => $calm_post ) : setup_postdata( $calm_post ); $cats = get_the_category( $calm_post->ID ); ?><article class="cp-calm-story<?php echo 0 === $index ? ' cp-calm-story--main' : ''; ?>"><a class="cp-calm-story__media" href="<?php echo esc_url( get_permalink( $calm_post ) ); ?>"><?php echo get_the_post_thumbnail( $calm_post, 0 === $index ? 'large' : 'medium_large' ); ?></a><div class="cp-calm-story__body"><?php if ( $cats ) : ?><span><?php echo esc_html( $cats[0]->name ); ?></span><?php endif; ?><h3><a href="<?php echo esc_url( get_permalink( $calm_post ) ); ?>"><?php echo esc_html( get_the_title( $calm_post ) ); ?></a></h3><p><?php echo esc_html( wp_trim_words( get_the_excerpt( $calm_post ), 22 ) ); ?></p></div></article><?php endforeach; wp_reset_postdata(); ?></div></section><?php endif; ?>
+	<section class="cp-section cp-calm-latest" id="cp-latest"><div class="cp-calm-section-head"><div><span><?php esc_html_e( 'Simple recipes. Generous flavor.', 'circlepress' ); ?></span><h2><?php esc_html_e( 'Made for real life', 'circlepress' ); ?></h2></div><a href="<?php echo esc_url( $blog_url ); ?>"><?php esc_html_e( 'View all', 'circlepress' ); ?> →</a></div><div class="cp-grid cp-grid--3"><?php $calm_latest = new WP_Query( array( 'posts_per_page' => 6, 'offset' => 3, 'ignore_sticky_posts' => true, 'no_found_rows' => true ) ); if ( ! $calm_latest->have_posts() ) { $calm_latest = new WP_Query( array( 'posts_per_page' => 6, 'ignore_sticky_posts' => true, 'no_found_rows' => true ) ); } while ( $calm_latest->have_posts() ) : $calm_latest->the_post(); get_template_part( 'template-parts/components/post-card' ); endwhile; wp_reset_postdata(); ?></div></section>
+	<?php get_template_part( 'template-parts/components/newsletter' ); return;
+endif;
+
 /* ============ SLIDER: featured carousel (Jannah/Newspaper style) ============ */
 if ( 'slider' === $layout ) :
 	$sq = circlepress_featured_query( 5 );

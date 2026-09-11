@@ -27,7 +27,8 @@ function circlepress_home_layouts() {
 		'masonry'  => __( 'Masonry (Pinterest-style)', 'circlepress' ),
 		'minimal'  => __( 'Minimal (centered reading)', 'circlepress' ),
 		'portal'   => __( 'Portal (sections per category)', 'circlepress' ),
-		'editorial' => __( 'Editorial (large alternating rows)', 'circlepress' ),
+           'editorial' => __( 'Editorial (large alternating rows)', 'circlepress' ),
+           'calm'     => __( 'Calm Editorial (soft recipe journal)', 'circlepress' ),
 	);
 }
 
@@ -43,7 +44,7 @@ function circlepress_home_layout() {
 			return $meta;
 		}
 	}
-	$layout = get_theme_mod( 'circlepress_home_layout', 'magazine' );
+    $layout = get_theme_mod( 'circlepress_home_layout', 'calm' );
 	if ( ! array_key_exists( (string) $layout, circlepress_home_layouts() ) ) {
 		$layout = 'magazine';
 	}
@@ -51,5 +52,5 @@ function circlepress_home_layout() {
 }
 
 function circlepress_sanitize_home_layout( $v ) {
-	return array_key_exists( (string) $v, circlepress_home_layouts() ) ? (string) $v : 'magazine';
+    return array_key_exists( (string) $v, circlepress_home_layouts() ) ? (string) $v : 'calm';
 }
