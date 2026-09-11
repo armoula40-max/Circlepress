@@ -32,7 +32,7 @@ if ( 'calm' === $layout ) :
 		<div class="cp-calm-hero__shape" aria-hidden="true"></div>
 	</section>
 	<?php if ( $calm_posts ) : ?><section class="cp-calm-featured"><div class="cp-calm-section-head"><div><span><?php esc_html_e( 'Fresh from the kitchen', 'circlepress' ); ?></span><h2><?php esc_html_e( 'Latest recipes & ideas', 'circlepress' ); ?></h2></div><a href="<?php echo esc_url( $blog_url ); ?>"><?php esc_html_e( 'Browse all recipes', 'circlepress' ); ?> →</a></div><div class="cp-calm-featured__grid">
-		<?php foreach ( $calm_posts as $index => $calm_post ) : setup_postdata( $calm_post ); $cats = get_the_category( $calm_post->ID ); ?><article class="cp-calm-story<?php echo 0 === $index ? ' cp-calm-story--main' : ''; ?>"><a class="cp-calm-story__media" href="<?php echo esc_url( get_permalink( $calm_post ) ); ?>"><?php echo get_the_post_thumbnail( $calm_post, 0 === $index ? 'large' : 'medium_large' ); ?></a><div class="cp-calm-story__body"><?php if ( $cats ) : ?><span><?php echo esc_html( $cats[0]->name ); ?></span><?php endif; ?><h3><a href="<?php echo esc_url( get_permalink( $calm_post ) ); ?>"><?php echo esc_html( get_the_title( $calm_post ) ); ?></a></h3><p><?php echo esc_html( wp_trim_words( get_the_excerpt( $calm_post ), 22 ) ); ?></p></div></article><?php endforeach; wp_reset_postdata(); ?></div></section><?php endif; ?>
+		<?php foreach ( $calm_posts as $index => $calm_post ) : setup_postdata( $calm_post ); $cats = get_the_category( $calm_post->ID ); ?><article class="cp-calm-story<?php echo 0 === $index ? ' cp-calm-story--main' : ''; ?>"><a class="cp-calm-story__media" href="<?php echo esc_url( get_permalink( $calm_post ) ); ?>"><?php echo get_the_post_thumbnail( $calm_post, 0 === $index ? 'large' : 'medium_large' ); ?></a><div class="cp-calm-story__body"><?php if ( $cats ) : ?><span><?php echo esc_html( $cats[0]->name ); ?></span><?php endif; ?><h3><a href="<?php echo esc_url( get_permalink( $calm_post ) ); ?>"><?php echo esc_html( get_the_title( $calm_post ) ); ?></a></h3><p><?php echo esc_html( circlepress_clean_excerpt( $calm_post, 22 ) ); ?></p></div></article><?php endforeach; wp_reset_postdata(); ?></div></section><?php endif; ?>
 	<section class="cp-section cp-calm-latest" id="cp-latest"><div class="cp-calm-section-head"><div><span><?php esc_html_e( 'Simple recipes. Generous flavor.', 'circlepress' ); ?></span><h2><?php esc_html_e( 'Made for real life', 'circlepress' ); ?></h2></div><a href="<?php echo esc_url( $blog_url ); ?>"><?php esc_html_e( 'View all', 'circlepress' ); ?> →</a></div><div class="cp-grid cp-grid--3"><?php $calm_latest = new WP_Query( array( 'posts_per_page' => 6, 'offset' => 3, 'ignore_sticky_posts' => true, 'no_found_rows' => true ) ); if ( ! $calm_latest->have_posts() ) { $calm_latest = new WP_Query( array( 'posts_per_page' => 6, 'ignore_sticky_posts' => true, 'no_found_rows' => true ) ); } while ( $calm_latest->have_posts() ) : $calm_latest->the_post(); get_template_part( 'template-parts/components/post-card' ); endwhile; wp_reset_postdata(); ?></div></section>
 	<?php get_template_part( 'template-parts/components/newsletter' ); return;
 endif;
@@ -59,7 +59,7 @@ if ( 'slider' === $layout ) :
 						<div class="cp-slide__content">
 							<?php if ( $cats ) : ?><span class="cp-kicker cp-kicker--light"><?php echo esc_html( $cats[0]->name ); ?></span><?php endif; ?>
 							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-							<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 18 ) ); ?></p>
+							<p><?php echo esc_html( circlepress_clean_excerpt( null, 18 ) ); ?></p>
 							<p><a class="cp-btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read more', 'circlepress' ); ?></a></p>
 						</div>
 					</article>
@@ -207,7 +207,7 @@ if ( 'minimal' === $layout ) :
 				<?php if ( has_post_thumbnail() ) : ?>
 					<a class="cp-minimal__media" href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>" tabindex="-1"><?php the_post_thumbnail( 'large', array( 'loading' => 'lazy' ) ); ?></a>
 				<?php endif; ?>
-				<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 30 ) ); ?></p>
+				<p><?php echo esc_html( circlepress_clean_excerpt( null, 30 ) ); ?></p>
 				<p><a class="cp-minimal__more" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Continue reading →', 'circlepress' ); ?></a></p>
 			</article>
 			<?php
@@ -274,7 +274,7 @@ if ( 'editorial' === $layout ) :
 						<?php if ( $cats ) : ?><a class="cp-card__kicker" href="<?php echo esc_url( get_category_link( $cats[0] ) ); ?>"><?php echo esc_html( $cats[0]->name ); ?></a><?php endif; ?>
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						<div class="cp-card__meta"><?php circlepress_posted_on(); ?></div>
-						<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 26 ) ); ?></p>
+						<p><?php echo esc_html( circlepress_clean_excerpt( null, 26 ) ); ?></p>
 						<p><a class="cp-btn cp-btn--outline" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read the story', 'circlepress' ); ?></a></p>
 					</div>
 				</div>

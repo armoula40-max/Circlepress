@@ -26,7 +26,7 @@ $cat  = $cats ? $cats[0] : null;
 		<?php if ( $cat ) : ?><a class="cp-card__kicker" href="<?php echo esc_url( get_category_link( $cat ) ); ?>"><?php echo esc_html( $cat->name ); ?></a><?php endif; ?>
 		<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 		<?php circlepress_card_rating(); ?>
-		<p class="cp-card__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 26 ) ); ?></p>
+		<p class="cp-card__excerpt"><?php echo esc_html( circlepress_clean_excerpt( null, 26 ) ); ?></p>
 		<div class="cp-card__meta"><?php circlepress_posted_on(); ?></div>
 		<p style="margin:6px 0 0"><a href="<?php the_permalink(); ?>"><strong><?php esc_html_e( 'Read more →', 'circlepress' ); ?></strong></a></p>
 	</div>

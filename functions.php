@@ -48,4 +48,11 @@ function circlepress_categories() {
     $categories = get_categories( array( 'number' => 10, 'hide_empty' => true ) );
     foreach ( $categories as $category ) { echo '<li><a href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a></li>'; }
 }
+function circlepress_clean_excerpt( $post = null, $words = 22 ) {
+    $text = get_the_excerpt( $post );
+    $text = strip_shortcodes( $text );
+    $text = preg_replace( '/\b(?:jump\s*to\s*recipe|print\s*recipe|continue\s*reading|read\s*more)\b/i', '', $text );
+    $text = wp_strip_all_tags( $text );
+    return wp_trim_words( trim( preg_replace( '/\s+/', ' ', $text ) ), $words );
+}
 ?>

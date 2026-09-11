@@ -116,7 +116,7 @@ if ( $sq->have_posts() ) :
 			<div class="cp-show__text">
 				<?php if ( $first ) : ?><span class="cp-kicker"><?php echo esc_html( $niche['label'] ); ?></span><?php endif; ?>
 				<h2><a href="<?php the_permalink(); ?>" style="color:var(--cp-text)"><?php the_title(); ?></a></h2>
-				<p style="color:var(--cp-muted)"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 22 ) ); ?></p>
+				<p style="color:var(--cp-muted)"><?php echo esc_html( circlepress_clean_excerpt( null, 22 ) ); ?></p>
 				<p><a class="cp-btn cp-btn--sm" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read more', 'circlepress' ); ?></a></p>
 			</div>
 		</div>
