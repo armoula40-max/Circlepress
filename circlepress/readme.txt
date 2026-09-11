@@ -3,7 +3,7 @@ Contributors: circlepress
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, magazine, food, recipes, crafts, diy, beauty, home-decor, gardening, pets, seo, adsense, affiliate, lightweight, responsive, translation-ready
@@ -71,6 +71,11 @@ Use the shortcodes: [top_list][rank_item], [coupon], [gift_grid][gift_item]. Ful
 Yes — enable the cookie banner (Customizer → Privacy & Consent). Strict mode blocks ads and video embeds until consent, and Google Consent Mode v2 signals are sent automatically. Remember to publish a Privacy Policy page.
 
 == Changelog ==
+
+= 2.2.0 =
+* NEW: 6 homepage shapes (Slider, Bento, Masonry, Minimal, Portal, Editorial) — 10 total, switch in Customizer or per page.
+* NEW: full color control — 13 colors (text, muted, surface, header & footer backgrounds...).
+* NEW: logo & header controls — logo width, tagline toggle, centered header layout, sticky on/off.
 
 = 2.1.0 =
 * NEW LOOK: modern borderless cards (rounded image, kicker, serif title, stars) — no boxes, no stretched gaps.

@@ -11,6 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $layout   = circlepress_home_layout();
+if ( in_array( $layout, array( 'slider', 'bento', 'masonry', 'minimal', 'portal', 'editorial' ), true ) ) {
+	get_template_part( 'template-parts/home/home-shapes' );
+	return;
+}
 $niche_id = circlepress_get_current_niche();
 $niche    = circlepress_get_niche( $niche_id );
 $title    = get_theme_mod( 'circlepress_hero_title', '' ) ? get_theme_mod( 'circlepress_hero_title', '' ) : $niche['hero_title'];

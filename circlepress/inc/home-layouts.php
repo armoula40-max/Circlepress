@@ -22,6 +22,12 @@ function circlepress_home_layouts() {
 		'grid'     => __( 'Grid (clean post grid)', 'circlepress' ),
 		'list'     => __( 'List (blog rows + sidebar)', 'circlepress' ),
 		'showcase' => __( 'Showcase (visual feature rows)', 'circlepress' ),
+		'slider'   => __( 'Slider (featured carousel)', 'circlepress' ),
+		'bento'    => __( 'Bento (hero mosaic grid)', 'circlepress' ),
+		'masonry'  => __( 'Masonry (Pinterest-style)', 'circlepress' ),
+		'minimal'  => __( 'Minimal (centered reading)', 'circlepress' ),
+		'portal'   => __( 'Portal (sections per category)', 'circlepress' ),
+		'editorial' => __( 'Editorial (large alternating rows)', 'circlepress' ),
 	);
 }
 

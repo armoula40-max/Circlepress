@@ -219,6 +219,13 @@ function circlepress_css_variables() {
 	$css .= '--cp-bg:' . esc_attr( $get( 'background', '#fffbf5' ) ) . ';';
 	$css .= '--cp-surface-2:' . esc_attr( $get( 'surface_2', '#faf3ea' ) ) . ';';
 	$css .= '--cp-border:' . esc_attr( $get( 'border', '#eee2d3' ) ) . ';';
+	$css .= '--cp-surface:' . esc_attr( $get( 'surface', '#ffffff' ) ) . ';';
+	$css .= '--cp-text:' . esc_attr( $get( 'text', '#232323' ) ) . ';';
+	$css .= '--cp-muted:' . esc_attr( $get( 'muted', '#6b6b6b' ) ) . ';';
+	$css .= '--cp-header-bg:' . esc_attr( $get( 'header_bg', '#ffffff' ) ) . ';';
+	$css .= '--cp-footer-bg:' . esc_attr( $get( 'footer_bg', '#1d1d1f' ) ) . ';';
+	$css .= '--cp-footer-text:' . esc_attr( $get( 'footer_text', '#e8e4dc' ) ) . ';';
+	$css .= '--cp-logo-width:' . absint( get_theme_mod( 'circlepress_logo_width', 220 ) ) . 'px;';
 
 	if ( get_theme_mod( 'circlepress_google_fonts', false ) && ! empty( $niche['fonts'] ) ) {
 		$heading = isset( $niche['fonts']['heading'] ) ? $niche['fonts']['heading'] : '';
@@ -260,6 +267,12 @@ function circlepress_google_fonts_url() {
 /* ---------- Body classes ---------- */
 function circlepress_body_classes( $classes ) {
 	$classes[] = 'niche-' . sanitize_html_class( circlepress_get_current_niche() );
+	if ( 'center' === get_theme_mod( 'circlepress_header_layout', 'left' ) ) {
+		$classes[] = 'cp-header-center';
+	}
+	if ( ! get_theme_mod( 'circlepress_sticky_header', true ) ) {
+		$classes[] = 'cp-no-sticky';
+	}
 	if ( ! is_active_sidebar( 'sidebar-1' ) || circlepress_is_fullwidth() ) {
 		$classes[] = 'no-sidebar';
 	}

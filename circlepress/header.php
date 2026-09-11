@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php else : ?>
 			<a class="cp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 				<span class="cp-logo__mark" aria-hidden="true"><?php echo esc_html( function_exists( 'mb_substr' ) ? mb_substr( get_bloginfo( 'name' ), 0, 1 ) : substr( get_bloginfo( 'name' ), 0, 1 ) ); ?></span>
-				<span class="cp-logo__word"><?php bloginfo( 'name' ); ?><span class="cp-logo__tag"><?php echo esc_html( circlepress_get_niche( circlepress_get_current_niche() )['label'] ); ?></span></span>
+				<span class="cp-logo__word"><?php bloginfo( 'name' ); ?><span class="cp-logo__tag"><?php echo esc_html( get_theme_mod( 'circlepress_logo_tagline', false ) && get_bloginfo( 'description' ) ? get_bloginfo( 'description' ) : circlepress_get_niche( circlepress_get_current_niche() )['label'] ); ?></span></span>
 			</a>
 		<?php endif; ?>
 

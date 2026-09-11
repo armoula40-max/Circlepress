@@ -48,6 +48,14 @@ function circlepress_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 'circlepress_header_cta_text', array( 'label' => __( 'Header button text (empty = hidden)', 'circlepress' ), 'section' => 'circlepress_header', 'type' => 'text' ) );
 	$wp_customize->add_setting( 'circlepress_header_cta_url', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
 	$wp_customize->add_control( 'circlepress_header_cta_url', array( 'label' => __( 'Header button URL', 'circlepress' ), 'section' => 'circlepress_header', 'type' => 'url' ) );
+	$wp_customize->add_setting( 'circlepress_logo_width', array( 'default' => 220, 'sanitize_callback' => 'circlepress_sanitize_logo_width' ) );
+	$wp_customize->add_control( 'circlepress_logo_width', array( 'label' => __( 'Logo width (px) — upload logo in Site Identity', 'circlepress' ), 'section' => 'circlepress_header', 'type' => 'number', 'input_attrs' => array( 'min' => 120, 'max' => 400, 'step' => 10 ) ) );
+	$wp_customize->add_setting( 'circlepress_logo_tagline', array( 'default' => false, 'sanitize_callback' => 'circlepress_sanitize_checkbox' ) );
+	$wp_customize->add_control( 'circlepress_logo_tagline', array( 'label' => __( 'Show tagline under logo (instead of niche label)', 'circlepress' ), 'section' => 'circlepress_header', 'type' => 'checkbox' ) );
+	$wp_customize->add_setting( 'circlepress_header_layout', array( 'default' => 'left', 'sanitize_callback' => 'circlepress_sanitize_header_layout' ) );
+	$wp_customize->add_control( 'circlepress_header_layout', array( 'label' => __( 'Header layout', 'circlepress' ), 'section' => 'circlepress_header', 'type' => 'select', 'choices' => array( 'left' => __( 'Logo left, menu inline', 'circlepress' ), 'center' => __( 'Centered logo, menu below (food-blog style)', 'circlepress' ) ) ) );
+	$wp_customize->add_setting( 'circlepress_sticky_header', array( 'default' => true, 'sanitize_callback' => 'circlepress_sanitize_checkbox' ) );
+	$wp_customize->add_control( 'circlepress_sticky_header', array( 'label' => __( 'Sticky header (stay visible on scroll)', 'circlepress' ), 'section' => 'circlepress_header', 'type' => 'checkbox' ) );
 	$wp_customize->add_setting( 'circlepress_show_search', array( 'default' => true, 'sanitize_callback' => 'circlepress_sanitize_checkbox' ) );
 	$wp_customize->add_control( 'circlepress_show_search', array( 'label' => __( 'Show search icon', 'circlepress' ), 'section' => 'circlepress_header', 'type' => 'checkbox' ) );
 
@@ -59,8 +67,14 @@ function circlepress_customize_register( $wp_customize ) {
 		'secondary'    => __( 'Secondary', 'circlepress' ),
 		'accent'       => __( 'Accent', 'circlepress' ),
 		'background'   => __( 'Background', 'circlepress' ),
-		'surface_2'    => __( 'Surface 2 (boxes)', 'circlepress' ),
+		'surface'      => __( 'Surface (cards & boxes)', 'circlepress' ),
+		'surface_2'    => __( 'Surface 2 (soft boxes)', 'circlepress' ),
+		'text'         => __( 'Text', 'circlepress' ),
+		'muted'        => __( 'Muted text', 'circlepress' ),
 		'border'       => __( 'Border', 'circlepress' ),
+		'header_bg'    => __( 'Header background', 'circlepress' ),
+		'footer_bg'    => __( 'Footer background', 'circlepress' ),
+		'footer_text'  => __( 'Footer text', 'circlepress' ),
 	) as $key => $label ) {
 		$wp_customize->add_setting( 'circlepress_color_' . $key, array( 'default' => '', 'sanitize_callback' => 'sanitize_hex_color' ) );
 		$wp_customize->add_control(
@@ -94,7 +108,7 @@ function circlepress_customize_register( $wp_customize ) {
 		'circlepress_home_layout',
 		array(
 			'label'       => __( 'Homepage layout shape', 'circlepress' ),
-			'description' => __( 'Magazine = niche sections. Grid/List/Showcase = alternative shapes. Can be overridden per page (Page Options).', 'circlepress' ),
+			'description' => __( 'Magazine = niche sections. 9 more shapes: Grid, List, Showcase, Slider, Bento, Masonry, Minimal, Portal, Editorial. Override per page in Page Options.', 'circlepress' ),
 			'section'     => 'circlepress_home',
 			'type'        => 'select',
 			'choices'     => circlepress_home_layouts(),
@@ -301,6 +315,12 @@ function circlepress_sidebar_choices() {
 		'left'       => __( 'Left', 'circlepress' ),
 		'no-sidebar' => __( 'No sidebar', 'circlepress' ),
 	);
+}
+function circlepress_sanitize_logo_width( $v ) {
+	return max( 120, min( 400, absint( $v ) ? absint( $v ) : 220 ) );
+}
+function circlepress_sanitize_header_layout( $v ) {
+	return in_array( $v, array( 'left', 'center' ), true ) ? $v : 'left';
 }
 function circlepress_sanitize_box_pos( $v ) {
 	return in_array( $v, array( 'after', 'before', 'shortcode' ), true ) ? $v : 'after';

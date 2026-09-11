@@ -4,7 +4,7 @@ Theme URI: https://circlepress.example.com/
 Author: CirclePress Team
 Author URI: https://circlepress.example.com/
 Description: CirclePress is a lightweight, SEO-first, multi-niche WordPress magazine theme. 9 built-in niche designs (Food & Recipes, Crochet, Pets, Nails, Furniture, Home Decor, DIY & Crafts, Beauty, Gardening) — each with its own style, homepage template, single-post features and Schema.org markup. Ad-ready (AdSense, Ezoic, Mediavine), affiliate-ready, Gutenberg-ready, translation-ready and built for small shared hosting.
-Version: 2.1.0
+Version: 2.2.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -854,4 +854,95 @@ body.niche-furniture .cp-card__media{border-radius:8px}
 @media(max-width:560px){
   .cp-layout:not(.cp-layout--no-sidebar) .cp-grid--3,.cp-layout:not(.cp-layout--no-sidebar) .cp-grid--4{grid-template-columns:minmax(0,1fr)}
   .cp-grid{gap:24px}
+}
+
+/* ============================================================
+   CirclePress 2.2.0 — new shapes + header options
+   ============================================================ */
+/* --- Header options --- */
+.custom-logo-link{display:inline-block;flex-shrink:0;line-height:0}
+.custom-logo{max-width:var(--cp-logo-width,220px);height:auto;width:auto}
+.cp-no-sticky .cp-header{position:static}
+body.cp-header-center .cp-header__inner{flex-direction:column;justify-content:flex-start;gap:12px;padding-top:20px;padding-bottom:12px}
+body.cp-header-center .cp-logo{margin:0 auto}
+body.cp-header-center .cp-nav{order:3;width:100%;border-top:1px solid var(--cp-border);padding-top:10px}
+body.cp-header-center .cp-nav ul{justify-content:center}
+body.cp-header-center .cp-header__actions{position:absolute;top:18px;inset-inline-end:20px}
+.cp-kicker--light{color:#fff}
+/* --- Slider --- */
+.cp-slider{position:relative;border-radius:22px;overflow:hidden;margin:26px 0 8px;box-shadow:0 18px 44px rgba(20,20,30,.16);background:var(--cp-surface-2)}
+.cp-slider__track{position:relative;min-height:440px}
+.cp-slide{position:absolute;inset:0;background-size:cover;background-position:center;background-color:var(--cp-surface-2);display:flex;align-items:flex-end;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility .6s}
+.cp-slide.is-active{opacity:1;visibility:visible;position:relative;min-height:440px}
+.cp-slide__shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,14,.78) 0%,rgba(10,10,14,.25) 55%,rgba(10,10,14,.05) 100%)}
+.cp-slide__content{position:relative;padding:34px;color:#fff;max-width:640px}
+.cp-slide__content h2{font-family:var(--cp-font-heading);font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.2;margin:8px 0 10px}
+.cp-slide__content h2 a{color:#fff}
+.cp-slide__content p{margin:0 0 12px;color:rgba(255,255,255,.88)}
+.cp-slider__arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#1d1d1f;font-size:1.2rem;line-height:1;cursor:pointer;z-index:3;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.cp-slider__prev{inset-inline-start:16px}
+.cp-slider__next{inset-inline-end:16px}
+[dir=rtl] .cp-slider__arrow{transform:translateY(-50%) scaleX(-1)}
+.cp-slider__dots{position:absolute;bottom:16px;inset-inline-start:0;inset-inline-end:0;display:flex;gap:8px;justify-content:center;z-index:3}
+.cp-slider__dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.5);cursor:pointer;padding:0}
+.cp-slider__dots button.is-active{background:#fff;transform:scale(1.25)}
+/* --- Bento --- */
+.cp-bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:170px;gap:14px;margin:26px 0 8px}
+.cp-bento__tile{position:relative;border-radius:18px;overflow:hidden;background-size:cover;background-position:center;background-color:var(--cp-surface-2);display:flex;align-items:flex-end;min-height:0;transition:transform .25s ease,box-shadow .25s ease}
+.cp-bento__tile--big{grid-column:span 2;grid-row:span 2}
+.cp-bento__tile:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,20,30,.18)}
+.cp-bento__shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,14,.72),rgba(10,10,14,0) 60%)}
+.cp-bento__text{position:relative;padding:16px;display:flex;flex-direction:column;gap:4px}
+.cp-bento__cat{font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#ffd9a8}
+.cp-bento__title{font-family:var(--cp-font-heading);color:#fff;font-size:1.02rem;line-height:1.3}
+.cp-bento__tile--big .cp-bento__title{font-size:1.7rem}
+/* --- Masonry --- */
+.cp-masonry{columns:3;column-gap:24px}
+.cp-masonry .cp-card{break-inside:avoid;margin:0 0 26px}
+.cp-masonry .cp-card .cp-card__excerpt{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cp-masonry .cp-card--tall .cp-card__media{aspect-ratio:3/4}
+.cp-masonry .cp-card--tall .cp-card__excerpt{-webkit-line-clamp:5}
+.cp-masonry .cp-card--mid .cp-card__media{aspect-ratio:1/1}
+.cp-masonry .cp-card--short .cp-card__media{aspect-ratio:16/10}
+.cp-masonry .cp-card--short .cp-card__excerpt{display:none}
+/* --- Minimal --- */
+.cp-minimal{max-width:700px;margin:0 auto}
+.cp-minimal__item{padding:34px 0;border-bottom:1px solid var(--cp-border);text-align:center}
+.cp-minimal__item:last-child{border-bottom:0}
+.cp-minimal__item h2{font-family:var(--cp-font-heading);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.25;margin:10px 0}
+.cp-minimal__item h2 a{color:var(--cp-text)}
+.cp-minimal__item h2 a:hover{color:var(--cp-primary)}
+.cp-minimal__item .cp-card__meta{justify-content:center;border:0;padding:0;margin:0 0 6px}
+.cp-minimal__media{display:block;border-radius:16px;overflow:hidden;margin:16px 0;box-shadow:0 8px 24px rgba(20,20,30,.10)}
+.cp-minimal__media img{width:100%;height:auto;display:block}
+.cp-minimal__more{font-weight:700}
+/* --- Editorial --- */
+.cp-ed__row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px 0;border-bottom:1px solid var(--cp-border)}
+.cp-ed__row:last-child{border-bottom:0}
+.cp-ed__row--flip .cp-ed__media{order:2}
+.cp-ed__media{position:relative;display:block;border-radius:20px;min-height:340px;background-size:cover;background-position:center;background-color:var(--cp-surface-2);box-shadow:0 10px 30px rgba(20,20,30,.12)}
+.cp-ed__num{position:absolute;top:16px;inset-inline-start:16px;background:rgba(255,255,255,.94);font-weight:800;font-size:.85rem;letter-spacing:.08em;padding:8px 14px;border-radius:999px;color:#1d1d1f}
+.cp-ed__text h2{font-family:var(--cp-font-heading);font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.2;margin:10px 0}
+.cp-ed__text h2 a{color:var(--cp-text)}
+.cp-ed__text h2 a:hover{color:var(--cp-primary)}
+.cp-ed__text .cp-card__meta{border:0;padding:0;margin:0 0 8px}
+.cp-ed__text>p{color:var(--cp-muted)}
+/* --- Shapes responsive --- */
+@media(max-width:1024px){.cp-masonry{columns:2}}
+@media(max-width:820px){
+  .cp-bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cp-bento__tile--big{grid-column:span 2;grid-row:span 1;min-height:230px}
+  .cp-ed__row{grid-template-columns:minmax(0,1fr);gap:18px}
+  .cp-ed__row--flip .cp-ed__media{order:0}
+  .cp-ed__media{min-height:240px}
+}
+@media(max-width:640px){
+  .cp-slider__track,.cp-slide.is-active{min-height:380px}
+  .cp-slide__content{padding:24px 20px}
+  .cp-slider__arrow{display:none}
+}
+@media(max-width:560px){
+  .cp-bento{grid-template-columns:minmax(0,1fr);grid-auto-rows:200px}
+  .cp-bento__tile--big{grid-column:auto;min-height:0}
+  .cp-masonry{columns:1}
 }
