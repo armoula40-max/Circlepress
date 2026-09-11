@@ -1,6 +1,6 @@
 <?php
 /**
- * Search results.
+ * Fallback index.
  *
  * @package CirclePress
  */
@@ -12,14 +12,6 @@ get_header();
 ?>
 <div class="cp-container">
 	<?php circlepress_breadcrumbs(); ?>
-	<header class="cp-section" style="margin-bottom:10px">
-		<h1 style="font-size:1.7rem;margin:0">
-			<?php
-			/* translators: %s: query. */
-			printf( esc_html__( 'Results for "%s"', 'circlepress' ), esc_html( get_search_query() ) );
-			?>
-		</h1>
-	</header>
 	<div class="<?php echo esc_attr( circlepress_layout_class() ); ?>">
 		<div>
 			<?php if ( have_posts() ) : ?>

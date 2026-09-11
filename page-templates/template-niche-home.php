@@ -1,6 +1,7 @@
 <?php
 /**
- * Niche homepage (used when front page shows latest posts OR static page without template).
+ * Template Name: CirclePress Home (Active Niche)
+ * Description: Magazine homepage using the niche selected in Customizer → Site Niche.
  *
  * @package CirclePress
  */

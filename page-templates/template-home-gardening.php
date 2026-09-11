@@ -1,6 +1,7 @@
 <?php
 /**
- * Niche homepage (used when front page shows latest posts OR static page without template).
+ * Template Name: CirclePress Home — Gardening
+ * Description: Magazine homepage forced to the Gardening style (overrides the global niche on this page only).
  *
  * @package CirclePress
  */
