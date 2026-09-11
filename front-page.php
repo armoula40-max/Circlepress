@@ -1,17 +1,7 @@
-<?php
-/**
- * Niche homepage (used when front page shows latest posts OR static page without template).
- *
- * @package CirclePress
- */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-get_header();
-?>
-<div class="cp-container">
-	<?php get_template_part( 'template-parts/home/home-sections' ); ?>
-</div>
-<?php
-get_footer();
+<?php get_header(); ?>
+<section class="hero"><div class="container hero-grid"><div><p class="eyebrow">Circlepress kitchen notes</p><h1>Good food starts with a little curiosity.</h1><p class="hero-copy">Comforting recipes, practical kitchen notes, and fresh inspiration for everyday meals worth sharing.</p><a class="button" href="#latest">Explore the latest ↓</a></div><div class="hero-art" aria-hidden="true"></div></div></section>
+<section class="section" id="latest"><div class="container"><div class="section-head"><div><p class="eyebrow">Fresh from the kitchen</p><h2 class="section-title">Latest recipes &amp; ideas</h2></div><a class="text-link" href="<?php echo esc_url( home_url( '/recipes/' ) ); ?>">Browse all recipes →</a></div><div class="post-grid">
+<?php $latest = new WP_Query( array( 'posts_per_page' => 8, 'post_status' => 'publish' ) ); if ( $latest->have_posts() ) : while ( $latest->have_posts() ) : $latest->the_post(); ?><article class="post-card"><a class="post-thumb" href="<?php the_permalink(); ?>"><?php circlepress_post_image(); ?></a><span class="post-category"><?php $cat=get_the_category(); echo esc_html($cat ? $cat[0]->name : 'Kitchen notes'); ?></span><h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3><p class="post-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 18 ) ); ?></p></article><?php endwhile; wp_reset_postdata(); else: ?><p>No recipes yet. Add your first post to see it here.</p><?php endif; ?></div></div></section>
+<section class="section"><div class="container editorial-callout"><div><p class="eyebrow">Simple recipes.</p><h2>Generous flavor.<br>Made for real life.</h2></div><div><p>Start with a reliable recipe, then make it your own. Browse thoughtful collections for weeknight cooking, slow weekends, and everything in between.</p><a class="text-link" href="<?php echo esc_url( home_url( '/recipes/' ) ); ?>">Open the recipe box →</a><div class="callout-list"><a href="<?php echo esc_url( home_url( '/category/quick-easy-meals/' ) ); ?>">Quick &amp; easy</a><a href="<?php echo esc_url( home_url( '/category/baking/' ) ); ?>">Baking</a><a href="<?php echo esc_url( home_url( '/category/vegetarian-recipes/' ) ); ?>">Vegetarian</a><a href="<?php echo esc_url( home_url( '/category/desserts/' ) ); ?>">Desserts</a></div></div></div></section>
+<section class="newsletter"><div class="container"><h2>Make tonight a little more delicious.</h2><p>Get occasional useful recipe ideas and kitchen inspiration. No spam, and you can opt out anytime.</p><?php get_search_form(); ?></div></section>
+<?php get_footer(); ?>

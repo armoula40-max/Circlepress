@@ -1,0 +1,1 @@
+<form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>"><label class="screen-reader-text" for="circlepress-search">Search</label><input id="circlepress-search" type="search" placeholder="Search recipes…" value="<?php echo get_search_query(); ?>" name="s"><button class="button" type="submit">Search</button></form>

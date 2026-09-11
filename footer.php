@@ -1,12 +1,10 @@
-<?php
-/** Editorial footer inspired by askinz-style recipe journals. @package CirclePress */
-if ( ! defined( 'ABSPATH' ) ) { exit; }
-?>
+<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
 </main>
-<?php circlepress_ad( 'footer' ); ?>
-<footer class="cp-footer cp-footer--editorial"><div class="cp-container"><div class="cp-footer__grid">
-  <div class="cp-footer__brand"><a class="cp-logo cp-logo--editorial" href="<?php echo esc_url( home_url( '/' ) ); ?>"><span class="cp-logo__word"><?php bloginfo( 'name' ); ?><span class="cp-logo__tag"> kitchen notes</span></span></a><p>Clear recipes and generous everyday cooking, made for real kitchens.</p><a class="cp-footer__contact" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Get in touch →</a></div>
-  <div class="cp-footer__explore"><h3><?php esc_html_e( 'Explore', 'circlepress' ); ?></h3><?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'depth' => 1, 'fallback_cb' => function () { echo '<ul><li><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li><li><a href="' . esc_url( home_url( '/recipes/' ) ) . '">Recipes</a></li><li><a href="' . esc_url( home_url( '/meal-plans/' ) ) . '">Meal Plans</a></li><li><a href="' . esc_url( home_url( '/ingredient-guides/' ) ) . '">Ingredient Guides</a></li><li><a href="' . esc_url( home_url( '/about/' ) ) . '">About</a></li><li><a href="' . esc_url( home_url( '/contact/' ) ) . '">Contact</a></li><li><a href="' . esc_url( home_url( '/privacy-policy/' ) ) . '">Privacy Policy</a></li></ul>'; } ) ); ?></div>
-  <div class="cp-footer__notes"><h3><?php esc_html_e( 'Kitchen Notes', 'circlepress' ); ?></h3><p>Get occasional useful recipe ideas. No spam, and you can opt out anytime.</p><form class="cp-footer__form" action="#" method="post"><label class="cp-sr" for="cp-footer-email">Email address</label><input id="cp-footer-email" type="email" name="email" placeholder="Email address" required><button class="cp-btn cp-btn--sm" type="submit">Join Kitchen Notes</button></form></div>
-</div><div class="cp-footer__bottom"><div class="cp-container" style="padding:0"><span><?php printf( esc_html__( '© %1$s %2$s. All rights reserved.', 'circlepress' ), esc_html( gmdate( 'Y' ) ), esc_html( get_bloginfo( 'name' ) ) ); ?></span><span><?php esc_html_e( 'Made for real kitchens.', 'circlepress' ); ?></span></div></div></div></footer>
-<?php circlepress_ad( 'sticky_footer' ); ?><button class="cp-top" aria-label="<?php esc_attr_e( 'Back to top', 'circlepress' ); ?>">↑</button><?php wp_footer(); ?></body></html>
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div><a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><span class="brand-mark">C</span><span><?php bloginfo( 'name' ); ?></span></a><p class="footer-about">Clear recipes and generous everyday cooking, made for real kitchens.</p></div>
+    <div><h3>Explore</h3><ul class="footer-nav"><li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li><li><a href="<?php echo esc_url( home_url( '/recipes/' ) ); ?>">Recipes</a></li><li><a href="<?php echo esc_url( home_url( '/meal-plans/' ) ); ?>">Meal Plans</a></li><li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">About</a></li><li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li></ul></div>
+    <div><h3>Kitchen notes</h3><p class="footer-about">Get occasional useful recipe ideas. No spam, and you can opt out anytime.</p><form class="search-form" action="#" method="post"><label class="screen-reader-text" for="footer-email">Email address</label><input id="footer-email" type="email" placeholder="Email address" required><button class="button" type="submit">Join</button></form></div>
+  </div>
+  <div class="footer-bottom"><span>© <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. All rights reserved.</span><span><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></span></div>
+</div></footer><?php wp_footer(); ?></body></html>
