@@ -1,0 +1,1 @@
+<?php get_header(); if(have_posts()):while(have_posts()):the_post(); ?><article class="single-wrap"><p class="eyebrow">Circlepress</p><h1 class="single-title"><?php the_title(); ?></h1><div class="entry-content"><?php the_content(); ?></div></article><?php endwhile;endif; get_footer(); ?>
