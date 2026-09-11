@@ -179,6 +179,7 @@ function circlepress_assets() {
 
 	/* Single small vanilla-JS file, footer-loaded. No jQuery on frontend. */
 	wp_enqueue_script( 'circlepress-main', CIRCLEPRESS_URI . '/assets/js/main.js', array(), $ver, true );
+	wp_enqueue_script( 'circlepress-askinz-presentation', CIRCLEPRESS_URI . '/assets/theme.js', array(), $ver, true );
 	wp_localize_script(
 		'circlepress-main',
 		'circlepressData',

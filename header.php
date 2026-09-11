@@ -1,13 +1,3 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { exit; } ?><!doctype html>
-<html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo( 'charset' ); ?>"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="<?php bloginfo( 'description' ); ?>"><?php wp_head(); ?></head>
-<body <?php body_class(); ?>><?php wp_body_open(); ?>
-<header class="site-header">
-  <div class="container header-main" id="site-header-main">
-    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php bloginfo( 'name' ); ?> home"><span class="brand-mark">C</span><span><?php bloginfo( 'name' ); ?></span></a>
-    <nav class="primary-nav" aria-label="Primary navigation"><?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'fallback_cb' => 'circlepress_primary_menu_fallback' ) ); ?></nav>
-    <div class="header-actions"><button class="search-toggle" aria-label="Open search" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
-  </div>
-  <div class="search-panel" id="search-panel"><div class="container"><?php get_search_form(); ?></div></div>
-</header>
-<main id="content">
+<?php if (!defined('ABSPATH')) exit; ?><!doctype html>
+<html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo('charset'); ?>"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&family=Sora:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&family=Sora:wght@700;800&display=swap" rel="stylesheet"></noscript><?php wp_head(); ?></head>
+<body <?php body_class(); ?>><div class="site-shell" id="top"><?php wp_body_open(); ?><header class="site-header"><div class="site-width header-inner"><a class="brand" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a><button class="menu-toggle" type="button" aria-label="<?php esc_attr_e('Open navigation menu', 'askinz-recipe-studio'); ?>" title="<?php esc_attr_e('Open navigation menu', 'askinz-recipe-studio'); ?>" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span></button><nav id="primary-navigation" aria-label="<?php esc_attr_e('Primary navigation', 'askinz-recipe-studio'); ?>"><?php askinz_recipe_studio_primary_menu(); ?></nav></div></header>

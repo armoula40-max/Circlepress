@@ -55,4 +55,28 @@ function circlepress_clean_excerpt( $post = null, $words = 22 ) {
     $text = wp_strip_all_tags( $text );
     return wp_trim_words( trim( preg_replace( '/\s+/', ' ', $text ) ), $words );
 }
+function askinz_recipe_studio_page_url( $slug, $fallback = '' ) {
+    $page = get_page_by_path( $slug );
+    return $page ? get_permalink( $page ) : ( $fallback ? $fallback : home_url( '/' ) );
+}
+function askinz_recipe_studio_primary_menu() {
+    wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_id' => 'primary-menu', 'menu_class' => 'primary-menu', 'fallback_cb' => 'circlepress_primary_menu_fallback' ) );
+}
+function askinz_recipe_studio_menu_fallback() { circlepress_primary_menu_fallback(); }
+function askinz_recipe_studio_pagination( $query = null ) {
+    $max_pages = $query instanceof WP_Query ? (int) $query->max_num_pages : (int) $GLOBALS['wp_query']->max_num_pages;
+    if ( $max_pages < 2 ) { return; }
+    echo '<nav class="pagination" aria-label="Recipe pages">' . wp_kses_post( paginate_links( array( 'total' => $max_pages, 'current' => max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ), 'type' => 'list', 'prev_text' => '← Previous', 'next_text' => 'Next →' ) ) ) . '</nav>';
+}
+function askinz_recipe_studio_newsletter_handler() {
+    if ( ! isset( $_POST['askinz_newsletter_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['askinz_newsletter_nonce'] ) ), 'askinz_newsletter' ) ) { wp_die( esc_html__( 'Your form session expired. Please return and try again.', 'circlepress' ) ); }
+    $email = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
+    $return_url = wp_get_referer() ?: home_url( '/' );
+    if ( ! is_email( $email ) || empty( $_POST['newsletter_consent'] ) ) { wp_safe_redirect( add_query_arg( 'newsletter', 'invalid', $return_url ) ); exit; }
+    $subject = sprintf( '[%s] Kitchen Notes subscription request', wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ) );
+    $sent = wp_mail( get_option( 'admin_email' ), $subject, 'Email: ' . $email . "\nConsent: opted in via the Kitchen Notes form\nSource: " . $return_url, array( 'Reply-To: ' . $email ) );
+    wp_safe_redirect( add_query_arg( 'newsletter', $sent ? 'sent' : 'failed', $return_url ) ); exit;
+}
+add_action( 'admin_post_nopriv_askinz_newsletter', 'askinz_recipe_studio_newsletter_handler' );
+add_action( 'admin_post_askinz_newsletter', 'askinz_recipe_studio_newsletter_handler' );
 ?>

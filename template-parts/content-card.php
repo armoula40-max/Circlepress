@@ -1,0 +1,9 @@
+<?php
+static $askinz_card_index = 0;
+global $askinz_card_loading_context;
+$askinz_card_index += 1;
+$askinz_is_priority_card = $askinz_card_loading_context !== 'related' && $askinz_card_index <= 2;
+$askinz_image_attributes = array('decoding' => 'async', 'sizes' => '(min-width: 1100px) 33vw, (min-width: 720px) 50vw, 100vw', 'loading' => $askinz_is_priority_card ? 'eager' : 'lazy');
+if ($askinz_is_priority_card) $askinz_image_attributes['fetchpriority'] = 'high';
+?>
+<article <?php post_class('recipe-card'); ?>><a class="card-image" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr(sprintf(__('Read %s', 'askinz-recipe-studio'), get_the_title())); ?>"><?php if (has_post_thumbnail()): $askinz_image = get_the_post_thumbnail(get_the_ID(), 'medium_large', $askinz_image_attributes); if (!$askinz_is_priority_card) { $askinz_image = preg_replace('/\sloading="[^"]*"/', ' loading="lazy"', $askinz_image, 1); $askinz_image = preg_replace('/\sfetchpriority="[^"]*"/', '', $askinz_image, 1); $askinz_deferred_image = preg_replace('/\ssrcset=("[^"]*")/', ' data-srcset=$1', $askinz_image); $askinz_deferred_image = preg_replace('/\ssrc=("[^"]*")/', ' data-src=$1', $askinz_deferred_image); $askinz_deferred_image = preg_replace('/<img\s/', '<img data-askinz-deferred-image="true" ', $askinz_deferred_image, 1); echo $askinz_deferred_image; echo '<noscript>' . $askinz_image . '</noscript>'; } else { echo $askinz_image; } else: ?><div aria-hidden="true"></div><?php endif; ?></a><div class="card-content"><?php $categories=get_the_category(); if ($categories): ?><p class="card-meta"><?php echo esc_html($categories[0]->name); ?></p><?php endif; ?><h2 class="card-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><p class="card-excerpt"><?php echo esc_html(wp_trim_words(get_the_excerpt(), 21)); ?></p></div></article>
